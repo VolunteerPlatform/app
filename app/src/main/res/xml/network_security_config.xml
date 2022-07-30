@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 카카오맵 이미지 네트워크 예외 추가 https://devtalk.kakao.com/t/api/80825/7 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">maps.daum-img.net</domain>
+    </domain-config>
+</network-security-config>

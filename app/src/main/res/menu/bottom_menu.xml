@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/homeButton"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/volFindButton"
+        android:enabled="true"
+        android:icon="@drawable/ic_vol_find"
+        android:title="봉사 탐색"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/volPortfolioButton"
+        android:enabled="true"
+        android:icon="@drawable/ic_vol_list"
+        android:title="포트폴리오"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/myPageButton"
+        android:enabled="true"
+        android:icon="@drawable/ic_my_icon"
+        android:title="마이페이지"
+        app:showAsAction="always"
+        />
+</menu>
