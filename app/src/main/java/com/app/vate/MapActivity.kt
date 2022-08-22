@@ -10,15 +10,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.app.vate.databinding.MapActivityBinding
-import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
 
-class MapActivity : AppCompatActivity() {
+class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResultListener {
 
     private lateinit var binding: MapActivityBinding
     private var mapView : MapView? = null
-    private var currentLocationPOI: MapPOIItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,22 +53,7 @@ class MapActivity : AppCompatActivity() {
         val uLongitude = userCurrentLocation?.longitude
         val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
 
-        val marker = MapPOIItem()
-        marker.itemName = "Current Location"
-        marker.tag = 1
-        marker.mapPoint = uCurrentPosition
-        marker.markerType = MapPOIItem.MarkerType.CustomImage
-
-        marker.customImageResourceId = R.drawable.location
-        marker.isCustomImageAutoscale = false
-
-        // 현 위치가 옮겨질 경우 마커가 여러개 찍힐 수 있으므로
-        if (currentLocationPOI != null) {
-            mapView?.removePOIItem(currentLocationPOI)
-        }
-
-        mapView?.addPOIItem(marker)
-        currentLocationPOI = marker
+        MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
 
         mapView?.setMapCenterPointAndZoomLevel(uCurrentPosition, 2,true)
     }
@@ -98,6 +82,23 @@ class MapActivity : AppCompatActivity() {
             .setNegativeButton("취소하기") { _, _ -> }
             .create()
             .show()
+    }
+
+    /**
+     * 카카오맵 API 를 이용해서 좌표를 이용해 주소를 받아오기
+     */
+    override fun onReverseGeoCoderFoundAddress(p0: MapReverseGeoCoder?, addressResult: String?) {
+        binding.topToolbarLocationKeyword.text = addressResult;
+    }
+
+    override fun onReverseGeoCoderFailedToFindAddress(p0: MapReverseGeoCoder?) {
+        binding.topToolbarLocationKeyword.text = "위치 변환 실패";
+    }
+
+    private fun getKakaoApiKey() : String {
+        val applicationInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+        val appKey = applicationInfo.metaData.get("com.kakao.sdk.AppKey").toString();
+        return appKey;
     }
 
     override fun onDestroy() {
