@@ -1,67 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
-    <Toolbar
-        android:id="@+id/topToolbar"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/map_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        app:umanoDragView="@id/slidingSessionList"
+        app:umanoPanelHeight="300dp">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/back_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/topToolbarLocationKeyword"
+            <Toolbar
+                android:id="@+id/topToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/topToolbarLocationKeyword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="2dp"
+                        android:drawablePadding="3dp"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"
+                        android:textStyle="bold"
+                        tools:text="주소가 입력되는 부분"
+                        app:drawableEndCompat="@drawable/ic_icon_arrow_right_small_mono" />
+                </LinearLayout>
+            </Toolbar>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/searchOnCurrentLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
-                android:textColor="@color/black"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:drawablePadding="3dp"
-                android:drawableEnd="@drawable/ic_icon_arrow_right_small_mono"
-                tools:text="주소가 입력되는 부분" />
+                android:layout_marginTop="5dp"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/white"
+                android:drawableStart="@drawable/ic_icon_location_mono"
+                android:drawablePadding="2dp"
+                android:padding="7dp"
+                android:text="@string/searchOnCurrentLocation"
+                android:visibility="gone"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topToolbar"
+                tools:visibility="visible" />
 
-        </LinearLayout>
-    </Toolbar>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/map_view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/topToolbar"
+                tools:background="#2024">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/map_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavBar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topToolbar"
-        tools:background="#2024">
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageButton
-            android:id="@+id/moveToCurrentLocationButton"
-            android:src="@drawable/ic_baseline_my_location_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toBottomOf="@id/map_view"
-            app:layout_constraintRight_toRightOf="@id/map_view" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageButton
+                android:id="@+id/moveToCurrentLocationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/ic_baseline_my_location_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="@id/map_view" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/slidingSessionList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/sessionListRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:itemCount="3"
+                tools:listitem="@layout/view_session_item" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/map_view"
         app:menu="@menu/bottom_menu" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
