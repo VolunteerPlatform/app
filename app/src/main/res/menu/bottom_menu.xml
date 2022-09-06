@@ -6,14 +6,13 @@
         android:enabled="true"
         android:icon="@drawable/ic_home"
         android:title="Home"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/volFindButton"
         android:enabled="true"
-        android:icon="@drawable/ic_vol_find"
-        android:title="봉사 탐색"
+        android:icon="@drawable/ic_icon_heart_mono"
+        android:title="찜한 봉사"
         app:showAsAction="always"
         />
 
@@ -21,7 +20,7 @@
         android:id="@+id/volPortfolioButton"
         android:enabled="true"
         android:icon="@drawable/ic_vol_list"
-        android:title="포트폴리오"
+        android:title="활동내역"
         app:showAsAction="always"
         />
 

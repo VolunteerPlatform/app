@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">VATE</string>
+    <string name="search_on_current_location">현재 위치에서 검색</string>
+    <string name="category_filter">필터</string>
+    <string name="category_selection_filter">유형 선택</string>
+    <string name="home_environment">주거환경</string>
+    <string name="living_support">생활지원</string>
+    <string name="counseling">상담</string>
+    <string name="education">교육</string>
+    <string name="medical">보건의료</string>
+    <string name="rural">농어촌 봉사</string>
+    <string name="culture">문화봉사</string>
+    <string name="environment">환경보호</string>
+    <string name="admin_assist">행정보조</string>
+    <string name="safety">안전예방</string>
+    <string name="for_public">공익</string>
+    <string name="disaster">재해, 재난</string>
+    <string name="global">해외봉사</string>
+    <string name="mentor">멘토링</string>
+    <string name="etc">기타</string>
+    <string name="selection_complete">선택 완료</string>
 </resources>

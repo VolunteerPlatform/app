@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/filterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/category_filter"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/filterTitle"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintStart_toStartOf="@id/filterTitle"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner_category_filter"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/categoryLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/category_selection_filter"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/filterTitle"
+            app:layout_constraintTop_toBottomOf="@id/filterTitle" />
+
+        <com.app.vate.custom_layout.ToggleButtonGroupTableLayout
+            android:id="@+id/categoryRadioButtonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <RadioButton
+                    android:id="@+id/category_radio_home_environment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="HOME_ENVIRONMENT"
+                    android:text="@string/home_environment"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_living_support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="LIVING_SUPPORT"
+                    android:text="@string/living_support"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_counseling"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="COUNSELING"
+                    android:text="@string/counseling"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="EDUCATION"
+                    android:text="@string/education"
+                    android:textSize="10dp" />
+            </TableRow>
+
+            <TableRow>
+
+                <RadioButton
+                    android:id="@+id/category_radio_medical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="MEDICAL"
+                    android:text="@string/medical"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_rural"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="RURAL"
+                    android:text="@string/rural"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_culture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="CULTURE"
+                    android:text="@string/culture"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_environment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="ENVIRONMENT"
+                    android:text="@string/environment"
+                    android:textSize="10dp" />
+            </TableRow>
+
+            <TableRow>
+
+                <RadioButton
+                    android:id="@+id/category_radio_admin_assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="ADMIN_ASSIST"
+                    android:text="@string/admin_assist"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_safety"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="SAFETY"
+                    android:text="@string/safety"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_public"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="PUBLIC"
+                    android:text="@string/for_public"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_disaster"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="DISASTER"
+                    android:text="@string/disaster"
+                    android:textSize="10dp" />
+            </TableRow>
+
+            <TableRow>
+
+                <RadioButton
+                    android:id="@+id/category_radio_global"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="GLOBAL"
+                    android:text="@string/global"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_mentor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="MENTOR"
+                    android:text="@string/mentor"
+                    android:textSize="10dp" />
+
+                <RadioButton
+                    android:id="@+id/category_radio_etc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="ETC"
+                    android:text="@string/etc"
+                    android:textSize="10dp" />
+            </TableRow>
+
+        </com.app.vate.custom_layout.ToggleButtonGroupTableLayout>
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/filterChangeCompleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/corner_shape"
+        android:elevation="1dp"
+        android:padding="15dp"
+        android:text="@string/selection_complete"
+        android:textSize="60px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
