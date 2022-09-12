@@ -7,6 +7,6 @@ data class SearchCondition(
     var longitude: Double,
     var latitude: Double,
     var category: String? = null,
-    var startDate: LocalDate? = null,
-    var endDate: LocalDate? = null
+    var startDate: LocalDate,
+    var endDate: LocalDate
 ) : Serializable

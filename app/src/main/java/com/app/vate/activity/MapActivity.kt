@@ -25,6 +25,7 @@ import net.daum.mf.map.api.MapView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
 import java.util.stream.Collectors
 
 class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResultListener,
@@ -81,7 +82,10 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         moveCenterToUserCurrentLocation()
         searchCondition = SearchCondition(
             mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
-            mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!
+            mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!,
+            null,
+            LocalDate.now(),
+            LocalDate.now().plusDays(30)
         )
 
         binding.sessionListRecyclerView.bringToFront()
