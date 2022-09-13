@@ -3,6 +3,8 @@ package com.app.vate.api
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
 import com.app.vate.model.ActivitySession
+import com.app.vate.model.VolActivity
+import com.app.vate.model.VolOrgan
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import retrofit2.Call
@@ -12,7 +14,7 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
-class ActivitySearchImpl : ActivitySearch {
+class ServerRequestImpl : ServerRequest {
     override fun searchActivity(searchCondition: SearchCondition): Call<ServerResponse<List<ActivitySession>>> {
         val gson = GsonBuilder()
             .registerTypeAdapter(
@@ -40,6 +42,26 @@ class ActivitySearchImpl : ActivitySearch {
         )
 
         return callGetSearchActivity;
+    }
+
+    override fun getDetailOrganizationInfo(organizationId: Long): Call<VolOrgan> {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api = retrofit.create(VolunteerAPI::class.java)
+        return api.getDetailOrganizationInfo(organizationId)
+    }
+
+    override fun getDetailActivityInfo(activityId: Long): Call<VolActivity> {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api = retrofit.create(VolunteerAPI::class.java)
+        return api.getDetailActivityInfo(activityId)
     }
 
     companion object {
