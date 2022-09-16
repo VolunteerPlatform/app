@@ -149,7 +149,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     private fun moveCenterToUserCurrentLocation() {
         val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val userCurrentLocation: Location? =
-            lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
         val uLatitude = userCurrentLocation?.latitude
         val uLongitude = userCurrentLocation?.longitude
