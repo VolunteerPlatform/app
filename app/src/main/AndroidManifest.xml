@@ -74,6 +74,12 @@
         </activity>
 
         <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
             android:name=".activity.MapActivity"
             android:exported="true">
         </activity>

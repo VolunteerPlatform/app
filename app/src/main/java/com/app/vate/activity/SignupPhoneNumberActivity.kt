@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.R
 import com.app.vate.api.PostResult
@@ -28,7 +29,7 @@ class SignupPhoneNumberActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.continueSignUpName)
         button.setOnClickListener {
-            val mapActivity = Intent(this, MapActivity::class.java)
+            val loginActivity = Intent(this, LoginActivity::class.java)
 
             val editText: EditText = findViewById(R.id.editTextPhoneNumber)
 
@@ -41,40 +42,49 @@ class SignupPhoneNumberActivity : AppCompatActivity() {
             val gender = intent.getStringExtra("gender").toString()
             val phoneNumber = editText.text.toString()
 
-            val data = Member(
-                loginId = email,
-                password = password,
-                memberName = memberName,
-                birthday = birthday,
-                idOf1365 = idOf1365,
-                centerName = centerName,
-                gender = gender,
-                phoneNumber = phoneNumber
-            )
-
-            Log.d("data ", data.loginId)
-            Log.d("data ", data.password)
-            Log.d("data ", data.memberName)
-            Log.d("data ", data.birthday)
-            Log.d("data ", data.idOf1365)
-            Log.d("data ", data.centerName)
-            Log.d("data ", data.gender)
-            Log.d("data ", data.phoneNumber)
-
-            api.post_users(data).enqueue(object : Callback<PostResult> {
-                override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
-                    Log.d("log",response.toString())
-                    Log.d("log", response.body().toString())
+            when {
+                phoneNumber.isEmpty() -> {
+                    Toast.makeText(applicationContext, "휴대폰 번호를 입력해주세요", Toast.LENGTH_SHORT).show()
                 }
-
-                override fun onFailure(call: Call<PostResult>, t: Throwable) {
-                    Log.d("log",t.message.toString())
-                    Log.d("log","fail")
+                phoneNumber.contains('-') -> {
+                    Toast.makeText(
+                        applicationContext,
+                        "지원하지 않는 양식입니다. '-' 를 제거해 주세요",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+                else -> {
+                    val data = Member(
+                        userName = email,
+                        password = password,
+                        userRealName = memberName,
+                        birthday = birthday,
+                        idOf1365 = idOf1365,
+                        centerName = centerName,
+                        gender = gender,
+                        phoneNumber = phoneNumber
+                    )
 
-            })
+                    api.post_users(data).enqueue(object : Callback<PostResult> {
+                        override fun onResponse(
+                            call: Call<PostResult>,
+                            response: Response<PostResult>
+                        ) {
+                            if (response.isSuccessful) {
+                                Log.d("test signup", response.toString())
+                                Log.d("test signup", response.body().toString())
+                            }
+                        }
 
-            startActivity(mapActivity)
+                        override fun onFailure(call: Call<PostResult>, t: Throwable) {
+                            Log.d("test signup", t.message.toString())
+                            Log.d("test signup", "fail login")
+                        }
+                    })
+
+                    startActivity(loginActivity)
+                }
+            }
         }
 
 

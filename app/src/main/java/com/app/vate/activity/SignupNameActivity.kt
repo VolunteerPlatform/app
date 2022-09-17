@@ -27,12 +27,24 @@ class SignupNameActivity : AppCompatActivity() {
             val email = intent.getStringExtra("email").toString()
             val password = intent.getStringExtra("password").toString()
 
-            val editText: EditText = findViewById(R.id.editTextUserName)
-            birthdayInfo.putExtra("memberName", editText.text.toString())
-            birthdayInfo.putExtra("email", email)
-            birthdayInfo.putExtra("password", password)
+            val memberName = binding.editTextUserName.text.toString()
 
-            startActivity(birthdayInfo)
+            when {
+                memberName.isEmpty() -> {
+                    Toast.makeText(applicationContext, "이름을 입력해 주세요", Toast.LENGTH_SHORT).show()
+                }
+                memberName.length > 10 -> {
+                    Toast.makeText(applicationContext, "이름은 한글자 이상 10글자 미만이어야 합니다.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                else -> {
+                    birthdayInfo.putExtra("memberName", memberName)
+                    birthdayInfo.putExtra("email", email)
+                    birthdayInfo.putExtra("password", password)
+
+                    startActivity(birthdayInfo)
+                }
+            }
         }
 
 

@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.R
 import com.app.vate.databinding.SignupBirthdayActivityBinding
@@ -20,21 +21,31 @@ class SignupBirthdayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val button: Button = findViewById(R.id.continueSignUp)
-        button.setOnClickListener{
+        button.setOnClickListener {
             val genderInfo = Intent(this, SignupGenderActivity::class.java)
 
             val email = intent.getStringExtra("email").toString()
             val password = intent.getStringExtra("password").toString()
             val memberName = intent.getStringExtra("memberName").toString()
 
-            val editText: EditText = findViewById(R.id.editTextUserBirthDay)
-            val birthday = editText.text.toString()
-            genderInfo.putExtra("memberName", memberName)
-            genderInfo.putExtra("email", email)
-            genderInfo.putExtra("password", password)
-            genderInfo.putExtra("birthday", birthday)
+            val birthday = binding.editTextUserBirthDay.text.toString()
 
-            startActivity(genderInfo)
+            when {
+                birthday.isEmpty() -> {
+                    Toast.makeText(applicationContext, "생년월일을 입력해주세요.", Toast.LENGTH_SHORT).show()
+                }
+                birthday.length != 8 || birthday.contains('/') -> {
+                    Toast.makeText(applicationContext, "지원하지 않는 생년월일 양식입니다.", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    genderInfo.putExtra("memberName", memberName)
+                    genderInfo.putExtra("email", email)
+                    genderInfo.putExtra("password", password)
+                    genderInfo.putExtra("birthday", birthday)
+
+                    startActivity(genderInfo)
+                }
+            }
         }
 
         val backButton: ImageButton = findViewById(R.id.backPage)

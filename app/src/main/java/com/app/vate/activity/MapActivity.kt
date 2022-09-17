@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -153,6 +154,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
         val uLatitude = userCurrentLocation?.latitude
         val uLongitude = userCurrentLocation?.longitude
+
         val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
 
         MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()

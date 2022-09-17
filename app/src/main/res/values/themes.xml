@@ -14,4 +14,9 @@
         <!-- Customize your theme here. -->
         <item name="colorControlHighlight">@color/VATE</item>
     </style>
+
+    <style name="hyperlink" >
+        <item name="android:textColor">@color/VATE</item>
+        <item name="android:background">@drawable/hyperlink_underline</item>
+    </style>
 </resources>

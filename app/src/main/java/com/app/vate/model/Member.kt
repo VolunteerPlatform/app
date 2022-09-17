@@ -2,9 +2,9 @@ package com.app.vate.model
 
 data class Member(
 
-    var loginId: String = "",
+    var userName: String = "",
     var password: String = "",
-    var memberName: String = "",
+    var userRealName: String = "",
     var birthday: String = "",
     var gender: String = "",
     var phoneNumber: String = "",

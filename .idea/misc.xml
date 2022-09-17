@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/drawable/button_selector.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/continue_button.xml" value="0.1535" />
         <entry key="app/src/main/res/drawable/corner_shape.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/hyperlink_underline.xml" value="0.232" />
         <entry key="app/src/main/res/drawable/ic_baseline_my_location_24.xml" value="0.1525" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1525" />
         <entry key="app/src/main/res/drawable/ic_icon_arrow_left_small_mono.xml" value="0.23" />
@@ -62,6 +63,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/filter_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/landing.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.34057971014492755" />
+        <entry key="app/src/main/res/layout/login_activity.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/map_activity.xml" value="0.1736016978388247" />
         <entry key="app/src/main/res/layout/signup_activity.xml" value="0.33810784868199184" />
         <entry key="app/src/main/res/layout/signup_birthday_activity.xml" value="0.3016304347826087" />
