@@ -1,13 +1,9 @@
 package com.app.vate.api
 
 import com.app.vate.api.model.ServerResponse
-import com.app.vate.model.ActivitySession
-import com.app.vate.model.VolActivity
-import com.app.vate.model.VolOrgan
+import com.app.vate.model.*
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 import java.time.LocalDate
 
 interface VolunteerAPI {
@@ -30,4 +26,10 @@ interface VolunteerAPI {
     fun getDetailActivityInfo(
         @Path("activityId") activityId: Long
     ) : Call<VolActivity>
+
+    @POST("/vol/sessions/{sessionId}")
+    fun applySession(
+        @Path("sessionId") sessionId: Long,
+        @Body json: ApplicationForm
+    ) : Call<ServerResponse<AppHistory>>
 }

@@ -2,9 +2,7 @@ package com.app.vate.api
 
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
-import com.app.vate.model.ActivitySession
-import com.app.vate.model.VolActivity
-import com.app.vate.model.VolOrgan
+import com.app.vate.model.*
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonDeserializer
 import retrofit2.Call
@@ -12,7 +10,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-
 
 class ServerRequestImpl : ServerRequest {
     override fun searchActivity(searchCondition: SearchCondition): Call<ServerResponse<List<ActivitySession>>> {
@@ -64,7 +61,29 @@ class ServerRequestImpl : ServerRequest {
         return api.getDetailActivityInfo(activityId)
     }
 
+    override fun applySession(sessionId: Long, memberId : Long, comment : String, privacyApproval : String) : Call<ServerResponse<AppHistory>> {
+        val gson = GsonBuilder()
+            .registerTypeAdapter(
+                LocalDate::class.java,
+                JsonDeserializer { json, _, _ ->
+                    LocalDate.parse(
+                        json.asString,
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    )
+                })
+            .create()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
+
+        val api = retrofit.create(VolunteerAPI::class.java)
+        val applicationForm = ApplicationForm(memberId, comment, privacyApproval)
+        return api.applySession(sessionId, applicationForm)
+    }
+
     companion object {
-        const val SERVER_URL = "http://15.164.213.232:8080/"
+        const val SERVER_URL = "http://192.168.0.25:8080/"
     }
 }
