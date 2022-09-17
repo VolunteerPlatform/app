@@ -11,9 +11,10 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.contains
 import com.app.vate.adapter.SessionListAdapter
-import com.app.vate.api.ActivitySearch
-import com.app.vate.api.ActivitySearchImpl
+import com.app.vate.api.ServerRequest
+import com.app.vate.api.ServerRequestImpl
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
 import com.app.vate.databinding.MapActivityBinding
@@ -33,7 +34,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
     private lateinit var binding: MapActivityBinding
     private var mapView: MapView? = null
-    private var activitySearch: ActivitySearch = ActivitySearchImpl()
+    private var serverRequest: ServerRequest = ServerRequestImpl()
     private lateinit var searchCondition: SearchCondition
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,13 +81,16 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         // 현재 위치 버튼을 맨 앞으로 가져오기 위해서
         binding.moveToCurrentLocationButton.bringToFront()
         moveCenterToUserCurrentLocation()
-        searchCondition = SearchCondition(
-            mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
-            mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!,
-            null,
-            LocalDate.now(),
-            LocalDate.now().plusDays(30)
-        )
+
+        if (!this::searchCondition.isInitialized) {
+            searchCondition = SearchCondition(
+                mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
+                mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!,
+                null,
+                LocalDate.now(),
+                LocalDate.now().plusDays(30)
+            )
+        }
 
         binding.sessionListRecyclerView.bringToFront()
     }
@@ -108,7 +112,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         mapView?.removeAllPOIItems()
         binding.searchOnCurrentLocation.visibility = View.GONE
 
-        val callSearchActivity = activitySearch.searchActivity(searchCondition)
+        val callSearchActivity = serverRequest.searchActivity(searchCondition)
         callSearchActivity.enqueue(object : Callback<ServerResponse<List<ActivitySession>>> {
             override fun onResponse(
                 call: Call<ServerResponse<List<ActivitySession>>>,
@@ -217,9 +221,16 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     /**
      * 지도 이동에 따른 이벤트 추가
      */
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onPause() {
         binding.mapView.removeAllViews()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        if (!binding.mapView.contains(mapView!!)) {
+            initMap()
+        }
+        super.onResume()
     }
 
     override fun onMapViewInitialized(p0: MapView?) {

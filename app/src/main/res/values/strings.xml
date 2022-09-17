@@ -19,4 +19,10 @@
     <string name="mentor">멘토링</string>
     <string name="etc">기타</string>
     <string name="selection_complete">선택 완료</string>
+    <string name="content">내용</string>
+    <string name="time">시간</string>
+    <string name="location">장소</string>
+    <string name="apply">신청하기</string>
+    <string name="accept">동의하기</string>
+    <string name="application_checked">확인 완료</string>
 </resources>

@@ -33,6 +33,18 @@
         <activity android:name=".activity.FilteringActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".activity.VolunteerDetailActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".activity.ApplicationActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".activity.ApplicationCompleteActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

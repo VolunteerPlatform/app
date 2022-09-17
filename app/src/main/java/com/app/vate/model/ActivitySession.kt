@@ -1,5 +1,6 @@
 package com.app.vate.model
 
+import java.io.Serializable
 import java.time.LocalDate
 
 data class ActivitySession(
@@ -15,4 +16,4 @@ data class ActivitySession(
     var activityMethod: String,
     var longitude: Double,
     var latitude: Double
-)
+) : Serializable
