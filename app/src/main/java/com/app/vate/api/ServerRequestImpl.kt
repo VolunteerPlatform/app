@@ -83,6 +83,27 @@ class ServerRequestImpl : ServerRequest {
         return api.applySession(sessionId, applicationForm)
     }
 
+    override fun getApplicationList(memberId: Long): Call<ServerResponse<List<AppHistory>>> {
+        val gson = GsonBuilder()
+            .registerTypeAdapter(
+                LocalDate::class.java,
+                JsonDeserializer { json, _, _ ->
+                    LocalDate.parse(
+                        json.asString,
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    )
+                })
+            .create()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(SERVER_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build();
+
+        val api = retrofit.create(VolunteerAPI::class.java)
+        return api.getApplicationList(memberId)
+    }
+
     companion object {
         const val SERVER_URL = "http://192.168.0.25:8080/"
     }

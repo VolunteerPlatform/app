@@ -17,4 +17,6 @@ interface ServerRequest {
     fun getDetailActivityInfo(activityId: Long) : Call<VolActivity>
 
     fun applySession(sessionId: Long, memberId : Long, comment : String, privacyApproval : String) : Call<ServerResponse<AppHistory>>
+
+    fun getApplicationList(memberId: Long) : Call<ServerResponse<List<AppHistory>>>
 }

@@ -32,4 +32,9 @@ interface VolunteerAPI {
         @Path("sessionId") sessionId: Long,
         @Body json: ApplicationForm
     ) : Call<ServerResponse<AppHistory>>
+
+    @GET("/members/application")
+    fun getApplicationList(
+        @Query("id") memberId: Long,
+    ) : Call<ServerResponse<List<AppHistory>>>
 }
