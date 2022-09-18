@@ -9,7 +9,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/volFindButton"
+        android:id="@+id/LikedVolButton"
         android:enabled="true"
         android:icon="@drawable/ic_icon_heart_mono"
         android:title="찜한 봉사"
@@ -17,7 +17,7 @@
         />
 
     <item
-        android:id="@+id/volPortfolioButton"
+        android:id="@+id/volHistoryButton"
         android:enabled="true"
         android:icon="@drawable/ic_vol_list"
         android:title="활동내역"

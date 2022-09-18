@@ -12,6 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.contains
+import androidx.fragment.app.Fragment
+import com.app.vate.R
 import com.app.vate.adapter.SessionListAdapter
 import com.app.vate.api.ServerRequest
 import com.app.vate.api.ServerRequestImpl
@@ -36,6 +38,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     private var mapView: MapView? = null
     private var serverRequest: ServerRequest = ServerRequestImpl()
     private lateinit var searchCondition: SearchCondition
+    private var currentFragment : Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
         initMap()
         initButton()
+        initBottomNavbar()
     }
 
     /**
@@ -101,6 +105,68 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
         sessionListAdapter.sessionList = sessionList
         sessionListAdapter.notifyDataSetChanged()
+    }
+
+    private fun initBottomNavbar() {
+        binding.bottomNavBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.homeButton -> {
+                    fragmentView(5)
+                }
+
+                R.id.LikedVolButton -> {
+
+                }
+
+                R.id.volHistoryButton -> {
+                    fragmentView(2)
+                }
+
+                R.id.myPageButton -> {
+
+                }
+
+            }
+            true
+        }
+    }
+
+    private fun fragmentView(option: Int) {
+        val transaction = supportFragmentManager.beginTransaction()
+        val currentLocalFragment = currentFragment
+
+        when (option) {
+            1 -> { // 찜한봉사 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+            }
+            2 -> { // 활동내역 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+
+                val fragment  = ActivityHistoryFragment.newInstance()
+                currentFragment = fragment
+                transaction.add(R.id.main_frame, fragment)
+                transaction.commit()
+            }
+
+            3 -> { // 마이페이지 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+            }
+            5 -> {
+                currentLocalFragment?.let {
+                    transaction.remove(currentLocalFragment).commit()
+                    currentFragment = null
+                }
+            }
+        }
     }
 
     /**
