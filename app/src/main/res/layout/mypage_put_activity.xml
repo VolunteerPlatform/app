@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mypageInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/pretendard"
+        android:text="내정보"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/memberIdText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="아이디"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypageInfoText" />
+
+    <TextView
+        android:id="@+id/memberIdEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberIdText" />
+
+    <TextView
+        android:id="@+id/memberNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="이름"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberIdEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberIdEdit" />
+
+    <EditText
+        android:id="@+id/memberNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberNameText" />
+
+    <TextView
+        android:id="@+id/memberBirthdayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="생년월일"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberNameEdit" />
+
+    <EditText
+        android:id="@+id/memberBirthdayEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberBirthdayText" />
+
+    <TextView
+        android:id="@+id/memberGenderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="성별"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberBirthdayEdit" />
+
+    <TextView
+        android:id="@+id/memberGenderEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberGenderText" />
+
+    <TextView
+        android:id="@+id/memberId1365Text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="1365 아이디"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberGenderEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberGenderEdit" />
+
+    <EditText
+        android:id="@+id/memberId1365Edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberId1365Text" />
+
+    <TextView
+        android:id="@+id/memberPhoneNumberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="휴대폰 번호"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberGenderEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberId1365Edit" />
+
+    <EditText
+        android:id="@+id/memberPhoneNumberEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberPhoneNumberText" />
+
+    <TextView
+        android:id="@+id/memberCenterNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendard"
+        android:text="센터 이름"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/memberGenderEdit"
+        app:layout_constraintTop_toBottomOf="@+id/memberPhoneNumberEdit" />
+
+    <EditText
+        android:id="@+id/memberCenterNameEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/round_corner_input_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/memberIdText"
+        app:layout_constraintTop_toBottomOf="@+id/memberCenterNameText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
