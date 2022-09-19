@@ -1,5 +1,7 @@
 package com.app.vate.api
 
 class PostResult {
-    var result: String? = null
+    val statusCode: Int? = null
+    val message: String? = null
+    val result: String? = null
 }
