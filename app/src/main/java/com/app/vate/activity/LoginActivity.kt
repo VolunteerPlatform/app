@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.api.Login
 import com.app.vate.api.PostResult
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.login.setOnClickListener {
             val mapActivity = Intent(this, MapActivity::class.java)
+            val redirect = Intent(this, LoginActivity::class.java)
 
             val editLoginIdText: EditText = binding.enterLoginId
             val loginId = editLoginIdText.text.toString()
@@ -41,13 +43,13 @@ class LoginActivity : AppCompatActivity() {
             api.loginInfo(loginForm).enqueue(object : Callback<PostResult> {
                 override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
                     if (response.isSuccessful) {
-                        Log.d("test login",response.toString())
-                        Log.d("test login", response.body().toString())
-                        Log.d("test login", response.headers().toString())
 
-                        Log.d("tlqkd",
-                            response.headers().get("accessToken").toString().split(" ")[1]
-                        )
+                        if (response.body()?.statusCode == 200) {
+                            startActivity(mapActivity)
+                        } else {
+                            Toast.makeText(applicationContext, "등록되지 않은 회원 정보입니다.", Toast.LENGTH_SHORT).show()
+                            startActivity(redirect)
+                        }
                     }
                 }
 
@@ -56,8 +58,6 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("test login","fail")
                 }
             })
-
-            startActivity(mapActivity)
         }
 
         binding.backPage.setOnClickListener {

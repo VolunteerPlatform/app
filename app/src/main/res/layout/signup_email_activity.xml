@@ -43,11 +43,23 @@
         app:layout_constraintStart_toStartOf="@+id/loginInfoText"
         app:layout_constraintTop_toBottomOf="@+id/loginInfoText" />
 
+    <TextView
+        android:id="@+id/loginIdValidation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/pretendard"
+        android:text="아이디 중복체크"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/continue_button"
         android:fontFamily="@font/pretendard"
         android:text="회원가입"
@@ -88,38 +100,38 @@
         android:id="@+id/startSignupText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/kakaoLogin"
-        android:text="이미 회원이라면 바로 "
-        app:layout_constraintTop_toBottomOf="@+id/kakaoLogin"
-        android:layout_marginTop="70dp"
         android:layout_marginLeft="64dp"
-        android:textSize="14sp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/pretendard"
+        android:text="이미 회원이라면 바로 "
         android:textColor="@color/black"
-        android:fontFamily="@font/pretendard" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/kakaoLogin"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoLogin" />
 
     <TextView
         android:id="@+id/startSignupButton"
+        style="@style/hyperlink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/startSignupText"
-        app:layout_constraintTop_toTopOf="@+id/startSignupText"
-        app:layout_constraintBottom_toBottomOf="@+id/startSignupText"
+        android:fontFamily="@font/pretendard"
         android:text="로그인"
         android:textColor="@color/VATE"
-        android:fontFamily="@font/pretendard"
         android:textSize="15sp"
-        style="@style/hyperlink" />
+        app:layout_constraintBottom_toBottomOf="@+id/startSignupText"
+        app:layout_constraintStart_toEndOf="@+id/startSignupText"
+        app:layout_constraintTop_toTopOf="@+id/startSignupText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard"
         android:text="하세요!"
-        android:textSize="14sp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/startSignupButton"
-        app:layout_constraintTop_toTopOf="@id/startSignupButton"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@id/startSignupButton"
-        android:fontFamily="@font/pretendard" />
+        app:layout_constraintStart_toEndOf="@+id/startSignupButton"
+        app:layout_constraintTop_toTopOf="@id/startSignupButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
