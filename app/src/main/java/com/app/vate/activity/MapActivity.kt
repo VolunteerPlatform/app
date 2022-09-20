@@ -12,9 +12,12 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.contains
+import androidx.fragment.app.Fragment
+import com.app.vate.R
 import com.app.vate.adapter.SessionListAdapter
-import com.app.vate.api.ActivitySearch
-import com.app.vate.api.ActivitySearchImpl
+import com.app.vate.api.ServerRequest
+import com.app.vate.api.ServerRequestImpl
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
 import com.app.vate.databinding.MapActivityBinding
@@ -26,6 +29,7 @@ import net.daum.mf.map.api.MapView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
 import java.util.stream.Collectors
 
 class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResultListener,
@@ -33,8 +37,9 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
     private lateinit var binding: MapActivityBinding
     private var mapView: MapView? = null
-    private var activitySearch: ActivitySearch = ActivitySearchImpl()
+    private var serverRequest: ServerRequest = ServerRequestImpl()
     private lateinit var searchCondition: SearchCondition
+    private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +48,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
         initMap()
         initButton()
+        initBottomNavbar()
     }
 
     /**
@@ -80,10 +86,16 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         // 현재 위치 버튼을 맨 앞으로 가져오기 위해서
         binding.moveToCurrentLocationButton.bringToFront()
         moveCenterToUserCurrentLocation()
-        searchCondition = SearchCondition(
-            mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
-            mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!
-        )
+
+        if (!this::searchCondition.isInitialized) {
+            searchCondition = SearchCondition(
+                mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
+                mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!,
+                null,
+                LocalDate.now(),
+                LocalDate.now().plusDays(30)
+            )
+        }
 
         binding.sessionListRecyclerView.bringToFront()
     }
@@ -96,6 +108,68 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         sessionListAdapter.notifyDataSetChanged()
     }
 
+    private fun initBottomNavbar() {
+        binding.bottomNavBar.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.homeButton -> {
+                    fragmentView(5)
+                }
+
+                R.id.LikedVolButton -> {
+
+                }
+
+                R.id.volHistoryButton -> {
+                    fragmentView(2)
+                }
+
+                R.id.myPageButton -> {
+
+                }
+
+            }
+            true
+        }
+    }
+
+    private fun fragmentView(option: Int) {
+        val transaction = supportFragmentManager.beginTransaction()
+        val currentLocalFragment = currentFragment
+
+        when (option) {
+            1 -> { // 찜한봉사 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+            }
+            2 -> { // 활동내역 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+
+                val fragment = ActivityHistoryFragment.newInstance()
+                currentFragment = fragment
+                transaction.add(R.id.main_frame, fragment)
+                transaction.commit()
+            }
+
+            3 -> { // 마이페이지 선택시
+                if (currentLocalFragment != null) {
+                    transaction.remove(currentLocalFragment)
+                    currentFragment = null
+                }
+            }
+            5 -> {
+                currentLocalFragment?.let {
+                    transaction.remove(currentLocalFragment).commit()
+                    currentFragment = null
+                }
+            }
+        }
+    }
+
     /**
      * 검색하기
      */
@@ -105,7 +179,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         mapView?.removeAllPOIItems()
         binding.searchOnCurrentLocation.visibility = View.GONE
 
-        val callSearchActivity = activitySearch.searchActivity(searchCondition)
+        val callSearchActivity = serverRequest.searchActivity(searchCondition)
         callSearchActivity.enqueue(object : Callback<ServerResponse<List<ActivitySession>>> {
             override fun onResponse(
                 call: Call<ServerResponse<List<ActivitySession>>>,
@@ -151,11 +225,10 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val userCurrentLocation: Location? =
             lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-
-        val uLatitude = userCurrentLocation?.latitude
-        val uLongitude = userCurrentLocation?.longitude
-
-        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
+            
+        val uLatitude = userCurrentLocation?.latitude ?: 37.5662952
+        val uLongitude = userCurrentLocation?.longitude ?: 126.9779451
+        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLongitude)
 
         MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
 
@@ -174,10 +247,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             return
         } else {
-            if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                || shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 showPermissionContextPopup()
             } else {
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
             }
         }
     }
@@ -187,7 +261,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
             .setTitle("위치 권한이 필요합니다.")
             .setMessage("주변 봉사활동을 확인하기 위해 사용자의 위치를 확인해야 합니다.")
             .setPositiveButton("동의하기") { _, _ ->
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
             }
             .setNegativeButton("취소하기") { _, _ -> }
             .create()
@@ -215,9 +289,16 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     /**
      * 지도 이동에 따른 이벤트 추가
      */
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onPause() {
         binding.mapView.removeAllViews()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        if (!binding.mapView.contains(mapView!!)) {
+            initMap()
+        }
+        super.onResume()
     }
 
     override fun onMapViewInitialized(p0: MapView?) {

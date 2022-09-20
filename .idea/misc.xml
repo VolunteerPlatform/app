@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/accepted_button.xml" value="0.257" />
         <entry key="../../../../layout/custom_preview.xml" value="0.25925925925925924" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2645" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/round_corner_text.xml" value="0.2115" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/accepted_button.xml" value="0.299" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/border_layout.xml" value="0.2115" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/button_round.xml" value="0.1945" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/corner_shape.xml" value="0.2115" />
@@ -25,13 +27,23 @@
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/ic_vol_find.xml" value="0.2645" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/ic_vol_list.xml" value="0.2645" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/round_button.xml" value="0.2265" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/round_button_orange.xml" value="0.257" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/round_corner_category_filter.xml" value="0.231" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/round_square_corner_text.xml" value="0.257" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/square_corner_text.xml" value="0.2075" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/waiting_button.xml" value="0.257" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/activity_main.xml" value="0.31875" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/app_history_item.xml" value="0.5" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/application_activity.xml" value="0.5" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/application_complete_activity.xml" value="0.33" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/border_layout.xml" value="0.33489583333333334" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/filter_activity.xml" value="0.5" />
-        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/map_activity.xml" value="0.33" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/fragment_activity_history.xml" value="0.25" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/map_activity.xml" value="0.25" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/switch_item.xml" value="0.3359375" />
-        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/view_session_item.xml" value="1.5" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/view_session_item.xml" value="0.33" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/layout/volunteer_detail_activity.xml" value="0.27575887131252674" />
+        <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/menu/app_history_filter_menu.xml" value="0.27575887131252674" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/menu/top_nav_menu.xml" value="0.3359375" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/xml/network_security_config.xml" value="0.2212962962962963" />

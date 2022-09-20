@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,25 +9,26 @@
         android:id="@+id/filterTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:text="@string/category_filter"
         android:textColor="@color/black"
         android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="@id/categoryPickerLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@id/filterTitle"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        app:layout_constraintStart_toStartOf="@id/filterTitle"
-        android:layout_marginTop="15dp"
+        android:id="@+id/categoryPickerLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/round_corner_category_filter"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterTitle">
 
         <TextView
             android:id="@+id/categoryLabel"
@@ -179,6 +181,45 @@
         </com.app.vate.custom_layout.ToggleButtonGroupTableLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/datePicker"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/round_corner_category_filter"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="15dp"
+        app:layout_constraintEnd_toEndOf="@id/categoryPickerLayout"
+        app:layout_constraintStart_toStartOf="@id/categoryPickerLayout"
+        app:layout_constraintTop_toBottomOf="@id/categoryPickerLayout">
+
+        <TextView
+            android:id="@+id/startDateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="날짜 선택"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="@id/filterTitle"
+            app:layout_constraintTop_toBottomOf="@id/filterTitle" />
+
+        <TextView
+            android:id="@+id/pickedDateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_square_corner_text"
+            android:drawableStart="@drawable/ic_calender"
+            android:drawablePadding="3dp"
+            android:gravity="center"
+            android:padding="10dp"
+            tools:text="09.06 ~ 09.07" />
+
+    </LinearLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/filterChangeCompleteButton"
         android:layout_width="0dp"
@@ -186,11 +227,12 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:background="@drawable/corner_shape"
+        android:background="@drawable/round_button_orange"
         android:elevation="1dp"
         android:padding="15dp"
         android:text="@string/selection_complete"
         android:textSize="60px"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
