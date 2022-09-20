@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -224,7 +225,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val userCurrentLocation: Location? =
             lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-
+            
         val uLatitude = userCurrentLocation?.latitude ?: 37.5662952
         val uLongitude = userCurrentLocation?.longitude ?: 126.9779451
         val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLongitude)

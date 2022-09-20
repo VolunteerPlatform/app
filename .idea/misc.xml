@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/accepted_button.xml" value="0.257" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.25925925925925924" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2645" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable-v24/round_corner_text.xml" value="0.2115" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/drawable/accepted_button.xml" value="0.299" />
@@ -46,10 +47,56 @@
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/menu/top_nav_menu.xml" value="0.3359375" />
         <entry key="..\:/Git/VolunteerPlatform/app/app/src/main/res/xml/network_security_config.xml" value="0.2212962962962963" />
+        <entry key="app/src/main/res/drawable-v24/round_corner_text.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/button_selector.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/continue_button.xml" value="0.1535" />
+        <entry key="app/src/main/res/drawable/corner_shape.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/hyperlink_underline.xml" value="0.232" />
+        <entry key="app/src/main/res/drawable/ic_baseline_my_location_24.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_icon_arrow_left_small_mono.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_icon_arrow_right_small_mono.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_icon_filter_mono.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_icon_heart_mono.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_icon_location_mono.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_icon_search_mono.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_image_1.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/ic_info.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_my_icon.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/kakao_login_button.xml" value="0.1785" />
+        <entry key="app/src/main/res/drawable/round_button.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/round_coner_input_text.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/round_corner_category_filter.xml" value="0.1205" />
+        <entry key="app/src/main/res/drawable/round_corner_input_text.xml" value="0.1785" />
+        <entry key="app/src/main/res/drawable/round_corner_input_text_default.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/text_selector.xml" value="0.23" />
+        <entry key="app/src/main/res/font/font.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.32065217391304346" />
+        <entry key="app/src/main/res/layout/filter_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/landing.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.34057971014492755" />
+        <entry key="app/src/main/res/layout/login_activity.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/map_activity.xml" value="0.1736016978388247" />
+        <entry key="app/src/main/res/layout/mypage_activity.xml" value="0.6335464477539063" />
+        <entry key="app/src/main/res/layout/mypage_put_activity.xml" value="0.4388089047664661" />
+        <entry key="app/src/main/res/layout/signup_activity.xml" value="0.33810784868199184" />
+        <entry key="app/src/main/res/layout/signup_birthday_activity.xml" value="0.3016304347826087" />
+        <entry key="app/src/main/res/layout/signup_center_name_activity.xml" value="0.3016304347826087" />
+        <entry key="app/src/main/res/layout/signup_email_activity.xml" value="0.32949676513671866" />
+        <entry key="app/src/main/res/layout/signup_gender_activity.xml" value="0.34782608695652173" />
+        <entry key="app/src/main/res/layout/signup_id1365_activity.xml" value="0.3016304347826087" />
+        <entry key="app/src/main/res/layout/signup_name_activity.xml" value="0.3016304347826087" />
+        <entry key="app/src/main/res/layout/signup_phone_number_activity.xml" value="0.2916666666666667" />
+        <entry key="app/src/main/res/layout/signup_user_birthday_activity.xml" value="0.2971014492753623" />
+        <entry key="app/src/main/res/layout/signup_user_id1365_activity.xml" value="0.32382246376811596" />
+        <entry key="app/src/main/res/layout/signup_user_idOf1365_activity.xml" value="0.2971014492753623" />
+        <entry key="app/src/main/res/layout/signup_user_name_activity.xml" value="0.297109277697577" />
+        <entry key="app/src/main/res/layout/view_session_item.xml" value="0.32065217391304346" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

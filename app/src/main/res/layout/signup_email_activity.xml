@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/signupEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/pretendard"
+        android:text="봉사활동을\n시작해 볼까요?"
+        android:textColor="@color/VATE"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loginInfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="먼저 로그인이 필요해요.\n이메일 주소를 입력해 주세요 :)"
+        android:textColor="#575757"
+        app:layout_constraintStart_toStartOf="@+id/signupEmail"
+        app:layout_constraintTop_toBottomOf="@+id/signupEmail" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/round_corner_input_text"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/loginInfoText"
+        app:layout_constraintTop_toBottomOf="@+id/loginInfoText" />
+
+    <TextView
+        android:id="@+id/loginIdValidation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/pretendard"
+        android:text="아이디 중복체크"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/continue_button"
+        android:fontFamily="@font/pretendard"
+        android:text="회원가입"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
+
+    <TextView
+        android:id="@+id/socialLoginInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/pretendard"
+        android:text="------------------              간편로그인              ------------------"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kakaoLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/kakao_login_button"
+        android:fontFamily="@font/pretendard"
+        android:text="카카오 로그인"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@id/signup"
+        app:layout_constraintStart_toStartOf="@+id/signup"
+        app:layout_constraintTop_toBottomOf="@+id/socialLoginInfo" />
+
+    <TextView
+        android:id="@+id/startSignupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/pretendard"
+        android:text="이미 회원이라면 바로 "
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/kakaoLogin"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoLogin" />
+
+    <TextView
+        android:id="@+id/startSignupButton"
+        style="@style/hyperlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard"
+        android:text="로그인"
+        android:textColor="@color/VATE"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/startSignupText"
+        app:layout_constraintStart_toEndOf="@+id/startSignupText"
+        app:layout_constraintTop_toTopOf="@+id/startSignupText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pretendard"
+        android:text="하세요!"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/startSignupButton"
+        app:layout_constraintStart_toEndOf="@+id/startSignupButton"
+        app:layout_constraintTop_toTopOf="@id/startSignupButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,5 +12,16 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="colorControlHighlight">@color/VATE</item>
     </style>
+
+    <style name="hyperlink" >
+        <item name="android:textColor">@color/VATE</item>
+        <item name="android:background">@drawable/hyperlink_underline</item>
+    </style>
+
+    <style name="hyperlink2" >
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>
