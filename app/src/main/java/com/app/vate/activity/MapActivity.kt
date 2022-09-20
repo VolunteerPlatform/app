@@ -38,7 +38,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     private var mapView: MapView? = null
     private var serverRequest: ServerRequest = ServerRequestImpl()
     private lateinit var searchCondition: SearchCondition
-    private var currentFragment : Fragment? = null
+    private var currentFragment: Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -148,7 +148,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                     currentFragment = null
                 }
 
-                val fragment  = ActivityHistoryFragment.newInstance()
+                val fragment = ActivityHistoryFragment.newInstance()
                 currentFragment = fragment
                 transaction.add(R.id.main_frame, fragment)
                 transaction.commit()
@@ -223,11 +223,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
     private fun moveCenterToUserCurrentLocation() {
         val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         val userCurrentLocation: Location? =
-            lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+            lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
 
-        val uLatitude = userCurrentLocation?.latitude
-        val uLongitude = userCurrentLocation?.longitude
-        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude!!, uLongitude!!)
+        val uLatitude = userCurrentLocation?.latitude ?: 37.5662952
+        val uLongitude = userCurrentLocation?.longitude ?: 126.9779451
+        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLongitude)
 
         MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
 
@@ -246,10 +246,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             return
         } else {
-            if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                || shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
                 showPermissionContextPopup()
             } else {
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
             }
         }
     }
@@ -259,7 +260,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
             .setTitle("위치 권한이 필요합니다.")
             .setMessage("주변 봉사활동을 확인하기 위해 사용자의 위치를 확인해야 합니다.")
             .setPositiveButton("동의하기") { _, _ ->
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1000)
+                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
             }
             .setNegativeButton("취소하기") { _, _ -> }
             .create()
