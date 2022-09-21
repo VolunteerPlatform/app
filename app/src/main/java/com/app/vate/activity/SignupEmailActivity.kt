@@ -28,52 +28,10 @@ class SignupEmailActivity : AppCompatActivity() {
         binding = SignupEmailActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var isValidation = false
-
-        binding.loginIdValidation.setOnClickListener {
-
-            val email = binding.editTextEmail.text.toString()
-
-            if (email.isEmpty()) {
-                Toast.makeText(applicationContext, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show()
-
-            } else {
-
-                val data = LoginForm(
-                    userName = email,
-                    password = ""
-                )
-
-                api.loginValidation(data).enqueue(object : Callback<PostResult> {
-                    override fun onResponse(
-                        call: Call<PostResult>,
-                        response: Response<PostResult>
-                    ) {
-                        if (response.isSuccessful) {
-
-                            Log.d("tlqkf", response.body()?.statusCode.toString())
-
-                            isValidation = if (response.body()?.statusCode == 200) {
-                                Toast.makeText(applicationContext, "회원 가입 가능한 아이디 입니다.", Toast.LENGTH_SHORT).show()
-                                true
-                            } else {
-                                Toast.makeText(applicationContext, "이미 가입된 회원입니다.", Toast.LENGTH_SHORT).show()
-                                false
-                            }
-                        }
-                    }
-
-                    override fun onFailure(call: Call<PostResult>, t: Throwable) {
-                        Log.d("test signup", t.message.toString())
-                        Log.d("test signup", "fail login")
-                    }
-                })
-            }
-        }
-
         val button: Button = findViewById(R.id.signup)
         button.setOnClickListener {
             val passwordInfo = Intent(this, SignupActivity::class.java)
+            val emailInfo = Intent(this, SignupEmailActivity::class.java)
 
             val email = binding.editTextEmail.text.toString()
 
@@ -88,11 +46,31 @@ class SignupEmailActivity : AppCompatActivity() {
                 else -> {
                     passwordInfo.putExtra("email", email)
 
-                    if (isValidation) {
-                        startActivity(passwordInfo)
-                    } else {
-                        Toast.makeText(applicationContext, "아이디 중복 체크를 진행 후 회원가입 해주세요.", Toast.LENGTH_SHORT).show()
-                    }
+                    val data = LoginForm(
+                        userName = email,
+                        password = ""
+                    )
+
+                    api.loginValidation(data).enqueue(object : Callback<PostResult> {
+                        override fun onResponse(
+                            call: Call<PostResult>,
+                            response: Response<PostResult>
+                        ) {
+                            if (response.isSuccessful) {
+                                if (response.body()?.statusCode == 200) {
+                                    startActivity(passwordInfo)
+                                } else {
+                                    Toast.makeText(applicationContext, "이미 가입된 회원입니다.", Toast.LENGTH_SHORT).show()
+                                    startActivity(emailInfo)
+                                }
+                            }
+                        }
+
+                        override fun onFailure(call: Call<PostResult>, t: Throwable) {
+                            Log.d("test signup", t.message.toString())
+                            Log.d("test signup", "fail login")
+                        }
+                    })
                 }
             }
         }

@@ -124,7 +124,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                 }
 
                 R.id.myPageButton -> {
-
+                    fragmentView(3)
                 }
 
             }
@@ -160,6 +160,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                     transaction.remove(currentLocalFragment)
                     currentFragment = null
                 }
+
+                val fragment = MypageFragment.newInstance()
+                currentFragment = fragment
+                transaction.add(R.id.main_frame, fragment)
+                transaction.commit()
             }
             5 -> {
                 currentLocalFragment?.let {
