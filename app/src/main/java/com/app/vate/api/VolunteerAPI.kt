@@ -20,12 +20,12 @@ interface VolunteerAPI {
     @GET("/vol/organizations/{organizationId}")
     fun getDetailOrganizationInfo(
         @Path("organizationId") organizationId: Long
-    ): Call<VolOrgan>
+    ): Call<ServerResponse<VolOrgan>>
 
     @GET("/vol/activities/{activityId}")
     fun getDetailActivityInfo(
         @Path("activityId") activityId: Long
-    ) : Call<VolActivity>
+    ) : Call<ServerResponse<VolActivity>>
 
     @POST("/vol/sessions/{sessionId}")
     fun applySession(

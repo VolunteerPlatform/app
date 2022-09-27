@@ -41,7 +41,7 @@ class ServerRequestImpl : ServerRequest {
         return callGetSearchActivity;
     }
 
-    override fun getDetailOrganizationInfo(organizationId: Long): Call<VolOrgan> {
+    override fun getDetailOrganizationInfo(organizationId: Long): Call<ServerResponse<VolOrgan>> {
         val retrofit = Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -51,7 +51,7 @@ class ServerRequestImpl : ServerRequest {
         return api.getDetailOrganizationInfo(organizationId)
     }
 
-    override fun getDetailActivityInfo(activityId: Long): Call<VolActivity> {
+    override fun getDetailActivityInfo(activityId: Long): Call<ServerResponse<VolActivity>> {
         val retrofit = Retrofit.Builder()
             .baseUrl(SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create())

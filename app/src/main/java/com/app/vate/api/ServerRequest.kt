@@ -12,9 +12,9 @@ interface ServerRequest {
 
     fun searchActivity(searchCondition: SearchCondition) : Call<ServerResponse<List<ActivitySession>>>
 
-    fun getDetailOrganizationInfo(organizationId : Long) : Call<VolOrgan>
+    fun getDetailOrganizationInfo(organizationId : Long) : Call<ServerResponse<VolOrgan>>
 
-    fun getDetailActivityInfo(activityId: Long) : Call<VolActivity>
+    fun getDetailActivityInfo(activityId: Long) : Call<ServerResponse<VolActivity>>
 
     fun applySession(sessionId: Long, memberId : Long, comment : String, privacyApproval : String) : Call<ServerResponse<AppHistory>>
 
