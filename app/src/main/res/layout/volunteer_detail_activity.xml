@@ -85,7 +85,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="@id/activityName"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/activityName"
         app:layout_constraintTop_toBottomOf="@id/contentLabel"
         tools:text="아이들에게 수학을 가르칩니다." />
@@ -108,7 +109,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="@id/activityName"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/activityName"
         app:layout_constraintTop_toBottomOf="@id/activityTimeLabel"
         tools:text="2022.08.22(월) 오전 9시 - 오후 6시" />
@@ -131,7 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:textAlignment="textStart"
-        app:layout_constraintEnd_toEndOf="@id/activityName"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/activityName"
         app:layout_constraintTop_toBottomOf="@id/locationLabel"
         tools:text="경기도 안성시 당왕동 553-13 3F" />
