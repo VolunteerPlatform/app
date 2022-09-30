@@ -15,5 +15,6 @@ data class ActivitySession(
     var category: String,
     var activityMethod: String,
     var longitude: Double,
-    var latitude: Double
+    var latitude: Double,
+    var wished: Boolean
 ) : Serializable

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isEmpty
 import com.app.vate.api.ServerRequest
 import com.app.vate.api.ServerRequestImpl
+import com.app.vate.api.model.ServerResponse
 import com.app.vate.databinding.VolunteerDetailActivityBinding
 import com.app.vate.model.*
 import com.app.vate.util.ActivityTimeFormatter
@@ -64,16 +65,15 @@ class VolunteerDetailActivity : AppCompatActivity() {
 
     private fun bindOrganAddress() {
         serverRequest.getDetailOrganizationInfo(activitySession.organizationId)
-            .enqueue(object : Callback<VolOrgan> {
+            .enqueue(object : Callback<ServerResponse<VolOrgan>> {
                 override fun onResponse(
-                    call: Call<VolOrgan>,
-                    response: Response<VolOrgan>
+                    call: Call<ServerResponse<VolOrgan>>,
+                    response: Response<ServerResponse<VolOrgan>>
                 ) {
-                    val result = response.body()
-                    binding.locationText.text = result?.address?.detailAddress
+                    binding.locationText.text = response.body()?.result?.address?.detailAddress
                 }
 
-                override fun onFailure(call: Call<VolOrgan>, t: Throwable) {
+                override fun onFailure(call: Call<ServerResponse<VolOrgan>>, t: Throwable) {
                     binding.locationText.text = "상세 위치 검색에 실패하였습니다."
                 }
             })
@@ -81,12 +81,12 @@ class VolunteerDetailActivity : AppCompatActivity() {
 
     private fun bindActivityContent() {
         serverRequest.getDetailActivityInfo(activitySession.activityId)
-            .enqueue(object: Callback<VolActivity> {
-                override fun onResponse(call: Call<VolActivity>, response: Response<VolActivity>) {
-                    binding.content.text = response.body()?.activityContent
+            .enqueue(object: Callback<ServerResponse<VolActivity>> {
+                override fun onResponse(call: Call<ServerResponse<VolActivity>>, response: Response<ServerResponse<VolActivity>>) {
+                    binding.content.text = response.body()?.result?.activityContent
                 }
 
-                override fun onFailure(call: Call<VolActivity>, t: Throwable) {
+                override fun onFailure(call: Call<ServerResponse<VolActivity>>, t: Throwable) {
                     binding.content.text = "내용을 불러오는데 실패하였습니다."
                 }
             })

@@ -42,7 +42,7 @@ class ActivityHistoryFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        getApplicationList(4)
+        getApplicationList()
         initTabMenu()
     }
 
@@ -68,8 +68,8 @@ class ActivityHistoryFragment : Fragment() {
             })
     }
 
-    fun getApplicationList(memberId: Long) {
-        serverRequest.getApplicationList(memberId)
+    fun getApplicationList() {
+        serverRequest.getApplicationList()
             .enqueue(object : Callback<ServerResponse<List<AppHistory>>> {
                 override fun onResponse(
                     call: Call<ServerResponse<List<AppHistory>>>,

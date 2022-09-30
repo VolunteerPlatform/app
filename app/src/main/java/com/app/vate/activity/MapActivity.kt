@@ -116,7 +116,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                 }
 
                 R.id.LikedVolButton -> {
-
+                    fragmentView(1)
                 }
 
                 R.id.volHistoryButton -> {
@@ -142,6 +142,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                     transaction.remove(currentLocalFragment)
                     currentFragment = null
                 }
+
+                val fragment = WishListFragment.newInstance()
+                currentFragment = fragment
+                transaction.add(R.id.main_frame, fragment)
+                transaction.commit()
             }
             2 -> { // 활동내역 선택시
                 if (currentLocalFragment != null) {
@@ -171,6 +176,8 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                     transaction.remove(currentLocalFragment).commit()
                     currentFragment = null
                 }
+
+                searchActivity()
             }
         }
     }
@@ -192,6 +199,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
             ) {
                 // draw 함수 추가
                 val result = response.body()?.result
+                Log.d("result", "호출 성공, ${result?.size}")
                 result?.toMutableList()?.let {
                     initRecycler(it)
                     addMarker(it)
@@ -202,6 +210,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                 call: Call<ServerResponse<List<ActivitySession>>>,
                 t: Throwable
             ) {
+                Log.d("result", "호출 실패")
                 // 네트워크 통신 불가 오류 출력
             }
         })
