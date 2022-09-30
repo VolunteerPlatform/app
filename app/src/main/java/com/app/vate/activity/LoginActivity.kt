@@ -43,6 +43,13 @@ class LoginActivity : AppCompatActivity() {
             api.loginInfo(loginForm).enqueue(object : Callback<PostResult> {
                 override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
                     if (response.isSuccessful) {
+                        response.headers().get("accessToken")?.let {
+                            LoginContext.accessToken = it
+                        }
+
+                        response.headers().get("refreshToken")?.let {
+                            LoginContext.refreshToken = it
+                        }
 
                         if (response.body()?.statusCode == 200) {
                             startActivity(mapActivity)
