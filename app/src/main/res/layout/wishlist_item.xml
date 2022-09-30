@@ -41,15 +41,18 @@
         android:textSize="14sp"
         app:layout_constraintLeft_toLeftOf="@id/organizationName"
         app:layout_constraintTop_toBottomOf="@id/organizationName"
-        tools:text="2022.08.22 오전 9시 ~ 오후 12시" />
+        tools:text="2022.08.22 오전 9시 - 오후 12시" />
 
-    <ToggleButton
-        android:id="@+id/wishListButton"
-        android:layout_width="30sp"
-        android:layout_height="30sp"
-        android:background="@drawable/star_selector"
-        android:textOff=""
-        android:textOn=""
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/wishCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button_gray"
+        android:elevation="1dp"
+        android:text="@string/cancel"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

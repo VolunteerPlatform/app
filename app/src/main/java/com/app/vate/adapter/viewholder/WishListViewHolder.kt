@@ -2,12 +2,13 @@ package com.app.vate.adapter.viewholder
 
 import android.content.Intent
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.recyclerview.widget.RecyclerView
 import com.app.vate.R
 import com.app.vate.activity.VolunteerDetailActivity
+import com.app.vate.adapter.WishListAdapter
 import com.app.vate.api.ServerRequestImpl
 import com.app.vate.api.model.ServerResponse
 import com.app.vate.model.ActivityMethod
@@ -18,22 +19,26 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+class WishListViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 
-    private val activityNameTextView : TextView = view.findViewById(R.id.activityName)
-    private val organizationNameTextView : TextView = view.findViewById(R.id.organizationName)
-    private val sessionDateTimeTextView : TextView = view.findViewById(R.id.sessionDateTime)
-    private val wishListButton : ToggleButton = view.findViewById(R.id.wishListButton)
-    private val categoryTextView : TextView = view.findViewById(R.id.category)
+    private val activityNameTextView: TextView = view.findViewById(R.id.activityName)
+    private val organizationNameTextView: TextView = view.findViewById(R.id.organizationName)
+    private val sessionDateTimeTextView: TextView = view.findViewById(R.id.sessionDateTime)
+    private val categoryTextView: TextView = view.findViewById(R.id.category)
     private val activityMethodTextView: TextView = view.findViewById(R.id.activity_method)
+    private val cancelButton: Button = view.findViewById(R.id.wishCancelButton)
 
-    fun bind(item : ActivitySession) {
+    fun bind(item: ActivitySession) {
         activityNameTextView.text = item.activityName
         organizationNameTextView.text = item.organizationName
-        sessionDateTimeTextView.text = ActivityTimeFormatter.convertDateAndTime(item.activityDate, item.startTime, item.endTime)
+        sessionDateTimeTextView.text = ActivityTimeFormatter.convertDateAndTime(
+            item.activityDate,
+            item.startTime,
+            item.endTime
+        )
+
         categoryTextView.text = Category.valueOf(item.category).description
         activityMethodTextView.text = ActivityMethod.valueOf(item.activityMethod).description
-        wishListButton.isChecked = item.wished
         addOnClickListener(item)
     }
 
@@ -45,13 +50,17 @@ class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
             view.context.startActivity(intent)
         }
 
-        wishListButton.setOnClickListener {
+        cancelButton.setOnClickListener {
             ServerRequestImpl().callWishList(item.activitySessionId).enqueue(object :
                 Callback<ServerResponse<String>> {
                 override fun onResponse(
                     call: Call<ServerResponse<String>>,
                     response: Response<ServerResponse<String>>
                 ) {
+                    var adapter = bindingAdapter as WishListAdapter
+                    adapter.sessionList.removeAt(bindingAdapterPosition)
+                    adapter.notifyDataSetChanged()
+
                     Toast.makeText(view.context, "정상 처리 되었습니다.", Toast.LENGTH_SHORT).show()
                 }
 
@@ -60,6 +69,5 @@ class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
                 }
             })
         }
-
     }
 }
