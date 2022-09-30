@@ -1,6 +1,7 @@
 package com.app.vate.api
 
 import com.app.vate.api.model.ServerResponse
+import com.app.vate.api.model.WishListForm
 import com.app.vate.model.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -34,7 +35,13 @@ interface VolunteerAPI {
     ) : Call<ServerResponse<AppHistory>>
 
     @GET("/members/application")
-    fun getApplicationList(
-        @Query("id") memberId: Long,
-    ) : Call<ServerResponse<List<AppHistory>>>
+    fun getApplicationList() : Call<ServerResponse<List<AppHistory>>>
+
+    @PUT("/members/wish-list")
+    fun callWishList(
+        @Body form: WishListForm
+    ) : Call<ServerResponse<String>>
+
+    @GET("/members/wish-list")
+    fun getWishList() : Call<ServerResponse<List<ActivitySession>>>
 }
