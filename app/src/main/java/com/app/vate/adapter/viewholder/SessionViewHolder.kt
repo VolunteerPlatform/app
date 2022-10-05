@@ -29,11 +29,11 @@ class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
 
     fun bind(item : ActivitySession) {
         activityNameTextView.text = item.activityName
-        organizationNameTextView.text = item.organizationName
+        organizationNameTextView.text = item.organization
         sessionDateTimeTextView.text = ActivityTimeFormatter.convertDateAndTime(item.activityDate, item.startTime, item.endTime)
         categoryTextView.text = Category.valueOf(item.category).description
         activityMethodTextView.text = ActivityMethod.valueOf(item.activityMethod).description
-        wishListButton.isChecked = item.wished
+        wishListButton.isChecked = item.isWished
         addOnClickListener(item)
     }
 
@@ -46,7 +46,7 @@ class SessionViewHolder(private val view: View) : RecyclerView.ViewHolder(view) 
         }
 
         wishListButton.setOnClickListener {
-            ServerRequestImpl().callWishList(item.activitySessionId).enqueue(object :
+            ServerRequestImpl().callWishList(item.sessionId).enqueue(object :
                 Callback<ServerResponse<String>> {
                 override fun onResponse(
                     call: Call<ServerResponse<String>>,

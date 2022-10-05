@@ -30,7 +30,7 @@ class WishListViewHolder(private val view: View) : RecyclerView.ViewHolder(view)
 
     fun bind(item: ActivitySession) {
         activityNameTextView.text = item.activityName
-        organizationNameTextView.text = item.organizationName
+        organizationNameTextView.text = item.organization
         sessionDateTimeTextView.text = ActivityTimeFormatter.convertDateAndTime(
             item.activityDate,
             item.startTime,
@@ -51,7 +51,7 @@ class WishListViewHolder(private val view: View) : RecyclerView.ViewHolder(view)
         }
 
         cancelButton.setOnClickListener {
-            ServerRequestImpl().callWishList(item.activitySessionId).enqueue(object :
+            ServerRequestImpl().callWishList(item.sessionId).enqueue(object :
                 Callback<ServerResponse<String>> {
                 override fun onResponse(
                     call: Call<ServerResponse<String>>,
