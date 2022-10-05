@@ -192,6 +192,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         binding.searchOnCurrentLocation.visibility = View.GONE
 
         val callSearchActivity = serverRequest.searchActivity(searchCondition)
+
         callSearchActivity.enqueue(object : Callback<ServerResponse<List<ActivitySession>>> {
             override fun onResponse(
                 call: Call<ServerResponse<List<ActivitySession>>>,
@@ -224,7 +225,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         for (key in sessionMap.keys) {
             val session = sessionMap[key]?.get(0)
             val marker = MapPOIItem()
-            marker.itemName = session?.organizationName
+            marker.itemName = session?.organization
             marker.markerType = MapPOIItem.MarkerType.RedPin
             marker.mapPoint = MapPoint.mapPointWithGeoCoord(session!!.latitude, session.longitude)
             mapView?.addPOIItem(marker)

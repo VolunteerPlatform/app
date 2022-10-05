@@ -6,6 +6,6 @@ data class VolOrgan (
     var id : Long,
     var name : String,
     var manager : String,
-    var organPhoneNumber : String,
+    var contact : String,
     var address : Address
 ) : Serializable

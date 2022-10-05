@@ -50,7 +50,7 @@ class ApplicationActivity : AppCompatActivity() {
     }
 
     private fun apply(activitySession: ActivitySession) {
-        serverRequest.applySession(activitySession.activitySessionId,"해주세요.", "AGREE")
+        serverRequest.applySession(activitySession.sessionId,"해주세요.", "AGREE")
             .enqueue(object : Callback<ServerResponse<AppHistory>> {
                 override fun onResponse(
                     call: Call<ServerResponse<AppHistory>>,
