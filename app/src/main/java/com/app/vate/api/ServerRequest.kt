@@ -23,4 +23,6 @@ interface ServerRequest {
     fun callWishList(sessionId: Long) : Call<ServerResponse<String>>
 
     fun getWishList() : Call<ServerResponse<List<ActivitySession>>>
+
+    fun cancelApplication(applicationId : Long) : Call<ServerResponse<String>>
 }

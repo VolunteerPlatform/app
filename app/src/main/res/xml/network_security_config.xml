@@ -4,6 +4,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">maps.daum-img.net</domain>
         <domain includeSubdomains="true">15.164.213.232</domain>
-        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">server.vate.kr</domain>
     </domain-config>
 </network-security-config>

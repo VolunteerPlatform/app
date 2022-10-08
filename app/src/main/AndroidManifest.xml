@@ -99,6 +99,14 @@
         <activity android:name=".activity.ApplicationCompleteActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".activity.ApplicationDetailActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".activity.ApplicationCancelCompleteActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

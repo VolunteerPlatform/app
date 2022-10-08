@@ -49,4 +49,8 @@ class ServerRequestImpl : ServerRequest {
     override fun getWishList(): Call<ServerResponse<List<ActivitySession>>> {
         return ApiClient.getClient().create(VolunteerAPI::class.java).getWishList()
     }
+
+    override fun cancelApplication(applicationId: Long) : Call<ServerResponse<String>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).cancelApplication(applicationId)
+    }
 }

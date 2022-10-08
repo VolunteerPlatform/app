@@ -44,4 +44,8 @@ interface VolunteerAPI {
 
     @GET("/members/wish-list")
     fun getWishList() : Call<ServerResponse<List<ActivitySession>>>
+
+    @DELETE("/members/application/{applicationId}")
+    fun cancelApplication(
+        @Path("applicationId") applicationId: Long) : Call<ServerResponse<String>>
 }
