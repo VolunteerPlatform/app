@@ -46,13 +46,6 @@ class SignupNameActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupActivity::class.java)
-            startActivity(back)
-        }
     }
 
     override fun onBackPressed() {

@@ -47,11 +47,5 @@ class SignupBirthdayActivity : AppCompatActivity() {
                 }
             }
         }
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupNameActivity::class.java)
-            startActivity(back)
-        }
     }
 }

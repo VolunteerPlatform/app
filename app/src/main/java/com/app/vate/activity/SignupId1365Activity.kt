@@ -47,12 +47,5 @@ class SignupId1365Activity : AppCompatActivity() {
                 }
             }
         }
-
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupGenderActivity::class.java)
-            startActivity(back)
-        }
     }
 }
