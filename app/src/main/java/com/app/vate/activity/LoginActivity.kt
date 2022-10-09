@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.api.Login
 import com.app.vate.api.PostResult
+import com.app.vate.databinding.FindLoginIdActivityBinding
 import com.app.vate.databinding.LoginActivityBinding
 import com.app.vate.model.LoginForm
 import retrofit2.Call
@@ -23,6 +24,16 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.findLoginId.setOnClickListener {
+            val findLoginId = Intent(this, FindLoginIdActivity::class.java)
+            startActivity(findLoginId)
+        }
+
+        binding.findPassword.setOnClickListener {
+            val findPassword = Intent(this, FindPasswordActivity::class.java)
+            startActivity(findPassword)
+        }
 
 
         binding.login.setOnClickListener {
@@ -54,15 +65,19 @@ class LoginActivity : AppCompatActivity() {
                         if (response.body()?.statusCode == 200) {
                             startActivity(mapActivity)
                         } else {
-                            Toast.makeText(applicationContext, "등록되지 않은 회원 정보입니다.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                applicationContext,
+                                "등록되지 않은 회원 정보입니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             startActivity(redirect)
                         }
                     }
                 }
 
                 override fun onFailure(call: Call<PostResult>, t: Throwable) {
-                    Log.d("test login",t.message.toString())
-                    Log.d("test login","fail")
+                    Log.d("test login", t.message.toString())
+                    Log.d("test login", "fail")
                 }
             })
         }
@@ -72,5 +87,4 @@ class LoginActivity : AppCompatActivity() {
             startActivity(emailActivity)
         }
     }
-
 }

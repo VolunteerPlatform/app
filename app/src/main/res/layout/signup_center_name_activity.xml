@@ -19,15 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/backPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:src="@drawable/ic_icon_arrow_left_small_mono"
-        app:layout_constraintStart_toStartOf="@id/userNameText"
-        app:layout_constraintTop_toTopOf="@+id/signText" />
-
     <TextView
         android:id="@+id/userNameText"
         android:layout_width="wrap_content"
@@ -66,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:text="3/8"
+        android:text="7/8"
         android:textColor="#C4C8CE"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/continueSignUp"
@@ -86,6 +77,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextCenterName"
         app:layout_constraintStart_toStartOf="@+id/editTextCenterName" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

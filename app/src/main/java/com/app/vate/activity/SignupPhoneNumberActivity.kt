@@ -81,17 +81,9 @@ class SignupPhoneNumberActivity : AppCompatActivity() {
                             Log.d("test signup", "fail login")
                         }
                     })
-
                     startActivity(loginActivity)
                 }
             }
-        }
-
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupId1365Activity::class.java)
-            startActivity(back)
         }
     }
 }

@@ -19,16 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ImageButton
-        android:id="@+id/backPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:src="@drawable/ic_icon_arrow_left_small_mono"
-        app:layout_constraintStart_toStartOf="@id/textGender"
-        app:layout_constraintTop_toTopOf="@+id/signText" />
-
     <TextView
         android:id="@+id/textGender"
         android:layout_width="wrap_content"
@@ -72,5 +62,17 @@
         app:layout_constraintTop_toBottomOf="@+id/textGender"
         android:background="@drawable/round_corner_input_text_default"
         android:backgroundTint="@color/button_background_color" />
+
+    <TextView
+        android:id="@+id/pageNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="475dp"
+        android:layout_marginEnd="20dp"
+        android:text="5/8"
+        android:textColor="#C4C8CE"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/signupGenderFemale"
+        app:layout_constraintTop_toBottomOf="@+id/signupGenderFemale" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

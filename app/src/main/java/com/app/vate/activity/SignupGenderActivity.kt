@@ -60,28 +60,5 @@ class SignupGenderActivity : AppCompatActivity() {
 
             startActivity(idOf1365Info)
         }
-
-
-//        val button: Button = findViewById(R.id.continueSignUp)
-//        button.setOnClickListener {
-//            val idOf1365Info = Intent(this, SignupId1365Activity::class.java)
-//
-//            val email = intent.getStringExtra("email").toString()
-//            val password = intent.getStringExtra("password").toString()
-//            val memberName = intent.getStringExtra("memberName").toString()
-//
-//            var gender = ""
-//
-//            startActivity(idOf1365Info)
-//
-//            val editText: EditText = findViewById(R.id.editTextEmail)
-//            idOf1365Info.putExtra("gender", editText.text.toString())
-//        }
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupBirthdayActivity::class.java)
-            startActivity(back)
-        }
     }
 }

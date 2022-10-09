@@ -19,15 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/backPage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:src="@drawable/ic_icon_arrow_left_small_mono"
-        app:layout_constraintStart_toStartOf="@id/phoneNumberText"
-        app:layout_constraintTop_toTopOf="@+id/signText" />
-
     <TextView
         android:id="@+id/phoneNumberText"
         android:layout_width="wrap_content"
@@ -59,35 +50,6 @@
         app:layout_constraintStart_toStartOf="@+id/phoneNumberText"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberText" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/phoneNumberValidation"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:fontFamily="@font/pretendard"-->
-<!--        android:text="휴대폰 번호"-->
-<!--        android:textColor="@color/hidden_text"-->
-<!--        android:textSize="26sp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/phoneNumberText"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber"-->
-<!--        android:layout_marginTop="40dp" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/editTextPhoneNumberValidation"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="13dp"-->
-<!--        android:layout_marginEnd="18dp"-->
-<!--        android:background="@drawable/round_corner_input_text"-->
-<!--        android:hint="000-0000-0000"-->
-<!--        android:imeOptions="actionDone"-->
-<!--        android:singleLine="true"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="15dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/phoneNumberText"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/phoneNumberValidation" />-->
-
     <TextView
         android:id="@+id/pageNumber"
         android:layout_width="wrap_content"
@@ -114,6 +76,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextPhoneNumber"
         app:layout_constraintStart_toStartOf="@+id/editTextPhoneNumber" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

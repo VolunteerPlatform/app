@@ -94,14 +94,39 @@
         android:id="@+id/login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/continue_button"
         android:fontFamily="@font/pretendard"
         android:text="로그인"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/enterPassword"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/enterPassword" />
+
+    <TextView
+        android:id="@+id/findLoginId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/login"
+        android:text="아이디 찾기"
+        android:fontFamily="@font/pretendard"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="70dp" />
+
+    <TextView
+        android:id="@+id/findPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendard"
+        android:text="비밀번호 찾기"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/login"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

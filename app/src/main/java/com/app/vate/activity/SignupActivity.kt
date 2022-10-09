@@ -53,11 +53,5 @@ class SignupActivity : AppCompatActivity() {
                 }
             }
         }
-
-        val backButton: ImageButton = findViewById(R.id.backPage)
-        backButton.setOnClickListener {
-            val back = Intent(this, SignupEmailActivity::class.java)
-            startActivity(back)
-        }
     }
 }
