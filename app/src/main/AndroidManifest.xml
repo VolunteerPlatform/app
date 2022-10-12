@@ -107,6 +107,10 @@
         <activity android:name=".activity.ApplicationCancelCompleteActivity"
             android:exported="true">
         </activity>
+
+        <activity android:name=".activity.TimeTableActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
