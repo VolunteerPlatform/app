@@ -45,7 +45,7 @@
         android:textSize="15dp"
         android:imeOptions="actionDone"
         android:singleLine="true"
-        android:textColor="@color/hidden_text"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/userBirthdayText"
         app:layout_constraintTop_toBottomOf="@+id/userBirthdayText" />
