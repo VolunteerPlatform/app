@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var emailInfo = Intent(this, SignupEmailActivity::class.java)
+        startActivity(emailInfo)
+
         var button : Button = findViewById(R.id.afterLoginButton)
         getAppKeyHash()
         button.setOnClickListener {
