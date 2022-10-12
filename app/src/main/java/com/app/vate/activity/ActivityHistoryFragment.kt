@@ -51,11 +51,20 @@ class ActivityHistoryFragment : Fragment() {
             ?.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     if (tab?.position == 0) {
-                        initAdapter(historyFilter(appHistory, "APPROVAL"))
+                        initAdapter(appHistory
+                            .stream()
+                            .filter {
+                                it.isAuthorized == "APPROVAL"
+                            }.collect(Collectors.toList()))
                     }
 
                     if (tab?.position == 1) {
-                        initAdapter(historyFilter(appHistory, "COMPLETE"))
+                        initAdapter(appHistory
+                            .stream()
+                            .filter {
+                                it.isAuthorized != "APPROVAL"
+                            }
+                            .collect(Collectors.toList()))
                     }
 
                 }
@@ -76,7 +85,11 @@ class ActivityHistoryFragment : Fragment() {
                     response: Response<ServerResponse<List<AppHistory>>>
                 ) {
                     appHistory = response.body()?.result?.toMutableList()?: mutableListOf()
-                    initAdapter(historyFilter(appHistory, "APPROVAL"))
+                    initAdapter(appHistory
+                        .stream()
+                        .filter {
+                            it.isAuthorized == "APPROVAL"
+                        }.collect(Collectors.toList()))
                 }
 
                 override fun onFailure(call: Call<ServerResponse<List<AppHistory>>>, t: Throwable) {
@@ -92,14 +105,6 @@ class ActivityHistoryFragment : Fragment() {
 
         appHistoryListAdapter.applicationList = applicationList
         appHistoryListAdapter.notifyDataSetChanged()
-    }
-
-    fun historyFilter(applicationList: MutableList<AppHistory>, isAuthorized : String) : MutableList<AppHistory> {
-        return applicationList
-            .stream()
-            .filter {
-                it.isAuthorized == isAuthorized
-            }.collect(Collectors.toList())
     }
 
     companion object {

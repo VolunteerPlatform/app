@@ -8,5 +8,7 @@ data class VolActivity(
     val activityName : String,
     val category: Category,
     val activitySummary : String,
-    val activityContent : String
+    val activityContent : String,
+    val organizationId: Long,
+    val organization: String
 ) : Serializable

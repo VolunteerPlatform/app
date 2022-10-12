@@ -7,12 +7,12 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.contains
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import com.app.vate.R
 import com.app.vate.adapter.SessionListAdapter
@@ -46,7 +46,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         binding = MapActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initMap()
+        initCondition()
         initButton()
         initBottomNavbar()
     }
@@ -77,27 +77,15 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         searchActivity()
     }
 
-    private fun initMap() {
-        mapView = MapView(this)
-        binding.mapView.addView(mapView)
-        checkRuntimePermission()
-        mapView?.setMapViewEventListener(this)
-
-        // 현재 위치 버튼을 맨 앞으로 가져오기 위해서
-        binding.moveToCurrentLocationButton.bringToFront()
-        moveCenterToUserCurrentLocation()
-
-        if (!this::searchCondition.isInitialized) {
-            searchCondition = SearchCondition(
-                mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!,
-                mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!,
-                null,
-                LocalDate.now(),
-                LocalDate.now().plusDays(30)
-            )
-        }
-
-        binding.sessionListRecyclerView.bringToFront()
+    private fun initCondition() {
+        val userLocation = getUserCurrentLocation()
+        searchCondition = SearchCondition(
+            userLocation.longitude,
+            userLocation.latitude,
+            null,
+            LocalDate.now(),
+            LocalDate.now().plusDays(30)
+        )
     }
 
     private fun initRecycler(sessionList: MutableList<ActivitySession>) {
@@ -182,27 +170,50 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         }
     }
 
+    private fun restartMap() {
+        mapView = MapView(this)
+        binding.mapView.addView(mapView)
+        mapView?.setMapViewEventListener(this)
+
+        // 현재 위치 버튼을 맨 앞으로 가져오기 위해서
+        binding.moveToCurrentLocationButton.bringToFront()
+        val uCurrentPosition =
+            MapPoint.mapPointWithGeoCoord(searchCondition.latitude, searchCondition.longitude)
+        MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
+        mapView?.setMapCenterPointAndZoomLevel(uCurrentPosition, 3, true)
+
+        binding.sessionListRecyclerView.bringToFront()
+    }
+
     /**
      * 검색하기
      */
     private fun searchActivity() {
         searchCondition.longitude = mapView?.mapCenterPoint?.mapPointGeoCoord?.longitude!!
         searchCondition.latitude = mapView?.mapCenterPoint?.mapPointGeoCoord?.latitude!!
+
+        val uCurrentPosition =
+            MapPoint.mapPointWithGeoCoord(searchCondition.latitude, searchCondition.longitude)
+        MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
+
         mapView?.removeAllPOIItems()
+        initRecycler(mutableListOf())
+
         binding.searchOnCurrentLocation.visibility = View.GONE
 
         val callSearchActivity = serverRequest.searchActivity(searchCondition)
+
         callSearchActivity.enqueue(object : Callback<ServerResponse<List<ActivitySession>>> {
             override fun onResponse(
                 call: Call<ServerResponse<List<ActivitySession>>>,
                 response: Response<ServerResponse<List<ActivitySession>>>
             ) {
-                // draw 함수 추가
-                val result = response.body()?.result
-                Log.d("result", "호출 성공, ${result?.size}")
-                result?.toMutableList()?.let {
-                    initRecycler(it)
-                    addMarker(it)
+                val result = response.body()?.result?.toMutableList() ?: mutableListOf()
+                if (result.isEmpty()) {
+                    Toast.makeText(applicationContext, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+                } else {
+                    initRecycler(result)
+                    addMarker(result)
                 }
             }
 
@@ -210,8 +221,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
                 call: Call<ServerResponse<List<ActivitySession>>>,
                 t: Throwable
             ) {
-                Log.d("result", "호출 실패")
-                // 네트워크 통신 불가 오류 출력
+                Toast.makeText(applicationContext, "네트워크 통신이 실패하였습니다.", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -224,7 +234,7 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         for (key in sessionMap.keys) {
             val session = sessionMap[key]?.get(0)
             val marker = MapPOIItem()
-            marker.itemName = session?.organizationName
+            marker.itemName = session?.organization
             marker.markerType = MapPOIItem.MarkerType.RedPin
             marker.mapPoint = MapPoint.mapPointWithGeoCoord(session!!.latitude, session.longitude)
             mapView?.addPOIItem(marker)
@@ -236,17 +246,40 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
      */
     @SuppressLint("MissingPermission")
     private fun moveCenterToUserCurrentLocation() {
-        val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val userCurrentLocation: Location? =
-            lm.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            
-        val uLatitude = userCurrentLocation?.latitude ?: 37.5662952
-        val uLongitude = userCurrentLocation?.longitude ?: 126.9779451
-        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLongitude)
+        val userCurrentLocation = getUserCurrentLocation()
+        val uCurrentPosition = MapPoint.mapPointWithGeoCoord(
+            userCurrentLocation.latitude,
+            userCurrentLocation.longitude
+        )
 
         MapReverseGeoCoder(getKakaoApiKey(), uCurrentPosition, this, this).startFindingAddress()
 
-        mapView?.setMapCenterPointAndZoomLevel(uCurrentPosition, 2, true)
+        mapView?.setMapCenterPointAndZoomLevel(uCurrentPosition, 3, true)
+        binding.searchOnCurrentLocation.visibility = View.VISIBLE;
+    }
+
+    private fun getUserCurrentLocation(): Location {
+        checkRuntimePermission()
+
+        var userCurrentLocation: Location? = null
+        val lm: LocationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        try {
+            userCurrentLocation =
+                lm.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: lm.getLastKnownLocation(
+                    LocationManager.NETWORK_PROVIDER
+                )
+        } catch (e: RuntimeException) {
+            Toast.makeText(this, "위치 사용이 불가능합니다. 설정을 확인해주세요.", Toast.LENGTH_SHORT).show()
+        }
+
+        if (userCurrentLocation == null) {
+            userCurrentLocation = Location("")
+            userCurrentLocation.latitude = DEFAULT_LATITUDE
+            userCurrentLocation.longitude = DEFAULT_LONGITUDE
+        }
+
+        return userCurrentLocation
     }
 
     private fun checkRuntimePermission() {
@@ -258,15 +291,11 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
             this,
             android.Manifest.permission.ACCESS_COARSE_LOCATION
         )
+
         if (hasFineLocationPermission == PackageManager.PERMISSION_GRANTED || hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED) {
             return
         } else {
-            if (shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION)
-                || shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_COARSE_LOCATION)) {
-                showPermissionContextPopup()
-            } else {
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
-            }
+            showPermissionContextPopup()
         }
     }
 
@@ -275,11 +304,33 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
             .setTitle("위치 권한이 필요합니다.")
             .setMessage("주변 봉사활동을 확인하기 위해 사용자의 위치를 확인해야 합니다.")
             .setPositiveButton("동의하기") { _, _ ->
-                requestPermissions(arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION), 1000)
+                requestPermissions(
+                    arrayOf(
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                    ), 1000
+                )
             }
-            .setNegativeButton("취소하기") { _, _ -> }
+            .setNegativeButton("취소하기") { dialog, which ->
+                Toast.makeText(this, "위치 사용 거부시 위치 기반 추천이 불가능합니다.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
             .create()
             .show()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        if (requestCode == 1000 && grantResults.isNotEmpty()) {
+            val userLocation = getUserCurrentLocation()
+            searchCondition.latitude = userLocation.latitude
+            searchCondition.longitude = userLocation.longitude
+
+            moveCenterToUserCurrentLocation()
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
     /**
@@ -308,10 +359,14 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
         super.onPause()
     }
 
+    /*
+    카테고리 설정 이후에 onResume 호출 -> 위치가 기존 위치가 아닌 현재 위치 기준으로 처리됨 ->
+     */
     override fun onResume() {
-        if (!binding.mapView.contains(mapView!!)) {
-            initMap()
+        if (binding.mapView.isEmpty()) {
+            restartMap()
         }
+
         super.onResume()
     }
 
@@ -350,5 +405,10 @@ class MapActivity : AppCompatActivity(), MapReverseGeoCoder.ReverseGeoCodingResu
 
     override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
         return;
+    }
+
+    companion object {
+        const val DEFAULT_LONGITUDE: Double = 126.9779451
+        const val DEFAULT_LATITUDE: Double = 37.5662952
     }
 }

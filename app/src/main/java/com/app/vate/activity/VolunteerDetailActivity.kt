@@ -38,7 +38,7 @@ class VolunteerDetailActivity : AppCompatActivity() {
     }
 
     private fun bindContent() {
-        binding.organizationName.text = activitySession.organizationName
+        binding.organizationName.text = activitySession.organization
         binding.activityName.text = activitySession.activityName
         binding.category.text = Category.valueOf(activitySession.category).description
         binding.activityMethod.text = ActivityMethod.valueOf(activitySession.activityMethod).description
@@ -56,7 +56,7 @@ class VolunteerDetailActivity : AppCompatActivity() {
         mapView.setMapCenterPointAndZoomLevel(uCurrentPosition, 2, true)
 
         val marker = MapPOIItem()
-        marker.itemName = activitySession.organizationName
+        marker.itemName = activitySession.organization
         marker.markerType = MapPOIItem.MarkerType.RedPin
         marker.mapPoint = MapPoint.mapPointWithGeoCoord(activitySession.latitude, activitySession.longitude)
         marker.isShowCalloutBalloonOnTouch = false

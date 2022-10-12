@@ -2,10 +2,7 @@ package com.app.vate.api
 
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
-import com.app.vate.model.ActivitySession
-import com.app.vate.model.AppHistory
-import com.app.vate.model.VolActivity
-import com.app.vate.model.VolOrgan
+import com.app.vate.model.*
 import retrofit2.Call
 
 interface ServerRequest {
@@ -23,4 +20,10 @@ interface ServerRequest {
     fun callWishList(sessionId: Long) : Call<ServerResponse<String>>
 
     fun getWishList() : Call<ServerResponse<List<ActivitySession>>>
+
+    fun cancelApplication(applicationId : Long) : Call<ServerResponse<String>>
+
+    fun registerTimetable(timeTableElements: List<TimeTableElement>) : Call<ServerResponse<String>>
+
+    fun getTimetable() : Call<ServerResponse<List<TimeTableElement>>>
 }

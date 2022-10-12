@@ -2,6 +2,7 @@ package com.app.vate.api
 
 import com.app.vate.api.model.SearchCondition
 import com.app.vate.api.model.ServerResponse
+import com.app.vate.api.model.TimeTableRequest
 import com.app.vate.api.model.WishListForm
 import com.app.vate.model.*
 import retrofit2.Call
@@ -48,5 +49,17 @@ class ServerRequestImpl : ServerRequest {
 
     override fun getWishList(): Call<ServerResponse<List<ActivitySession>>> {
         return ApiClient.getClient().create(VolunteerAPI::class.java).getWishList()
+    }
+
+    override fun cancelApplication(applicationId: Long) : Call<ServerResponse<String>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).cancelApplication(applicationId)
+    }
+
+    override fun registerTimetable(timeTableElements: List<TimeTableElement>): Call<ServerResponse<String>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).registerTimetable(TimeTableRequest(timeTableElements))
+    }
+
+    override fun getTimetable(): Call<ServerResponse<List<TimeTableElement>>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).getTimetable()
     }
 }

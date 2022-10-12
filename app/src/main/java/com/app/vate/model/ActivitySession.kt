@@ -5,10 +5,10 @@ import java.time.LocalDate
 
 data class ActivitySession(
     var activityId: Long = 0,
-    var activitySessionId: Long = 0,
+    var sessionId: Long = 0,
     var organizationId: Long = 0,
     var activityName: String = "",
-    var organizationName: String = "",
+    var organization: String = "",
     var activityDate: LocalDate,
     var startTime: Int,
     var endTime: Int,
@@ -16,5 +16,5 @@ data class ActivitySession(
     var activityMethod: String,
     var longitude: Double,
     var latitude: Double,
-    var wished: Boolean
+    var isWished: Boolean
 ) : Serializable

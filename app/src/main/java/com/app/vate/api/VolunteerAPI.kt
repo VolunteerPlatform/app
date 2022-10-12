@@ -1,6 +1,7 @@
 package com.app.vate.api
 
 import com.app.vate.api.model.ServerResponse
+import com.app.vate.api.model.TimeTableRequest
 import com.app.vate.api.model.WishListForm
 import com.app.vate.model.*
 import retrofit2.Call
@@ -44,4 +45,16 @@ interface VolunteerAPI {
 
     @GET("/members/wish-list")
     fun getWishList() : Call<ServerResponse<List<ActivitySession>>>
+
+    @DELETE("/members/application/{applicationId}")
+    fun cancelApplication(
+        @Path("applicationId") applicationId: Long) : Call<ServerResponse<String>>
+
+    @POST("/members/timetable")
+    fun registerTimetable(
+        @Body json: TimeTableRequest
+    ): Call<ServerResponse<String>>
+
+    @GET("/members/timetable")
+    fun getTimetable() : Call<ServerResponse<List<TimeTableElement>>>
 }
