@@ -37,7 +37,7 @@
 
 
     <TextView
-        android:id="@+id/myPageLink"
+        android:id="@+id/myInformation"
         style="@style/hyperlink2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/startMyText" />
 
     <TextView
-        android:id="@+id/myVolPageLink"
+        android:id="@+id/myTimetable"
         style="@style/hyperlink2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,6 +60,6 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/startMyText"
-        app:layout_constraintTop_toBottomOf="@id/myPageLink" />
+        app:layout_constraintTop_toBottomOf="@id/myInformation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
