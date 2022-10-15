@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.app.vate.R
+import com.app.vate.model.CertificationForm
 
 class MypageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +29,11 @@ class MypageFragment : Fragment() {
     private fun initButton(view: View) {
         view.findViewById<TextView>(R.id.myInformation)?.setOnClickListener {
             val intent = Intent(it.context, MypageActivity::class.java)
+            startActivity(intent)
+        }
+
+        view.findViewById<TextView>(R.id.updatePassword)?.setOnClickListener {
+            val intent = Intent(it.context, PasswordCertificationActivity::class.java)
             startActivity(intent)
         }
 

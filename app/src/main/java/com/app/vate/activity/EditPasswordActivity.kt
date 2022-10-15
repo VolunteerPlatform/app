@@ -3,17 +3,13 @@ package com.app.vate.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.api.EditPassword
-import com.app.vate.api.FindLoginId
 import com.app.vate.api.PostResult
 import com.app.vate.databinding.EditPasswordActivityBinding
-import com.app.vate.databinding.FindLoginIdActivityBinding
 import com.app.vate.model.EditPasswordForm
-import com.app.vate.model.FindLoginIdForm
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -65,4 +65,9 @@ interface VolunteerAPI {
     fun updateMemberProfile(
         @Body json: UpdateMemberProfileForm
     ) : Call<ServerResponse<UpdateMemberProfileForm>>
+
+    @POST("/members/password-certification")
+    fun certificationPassword(
+        @Body json: CertificationForm
+    ) : Call<ServerResponse<CertificationForm>>
 }

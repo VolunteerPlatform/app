@@ -1,22 +1,14 @@
 package com.app.vate.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.app.vate.R
-import com.app.vate.api.PostResult
 import com.app.vate.api.ServerRequestImpl
 import com.app.vate.api.UpdateMemberProfile
 import com.app.vate.api.model.ServerResponse
 import com.app.vate.databinding.MypageActivityBinding
-import com.app.vate.databinding.SignupActivityBinding
 import com.app.vate.model.MemberProfile
-import com.app.vate.model.TimeTableElement
 import com.app.vate.model.UpdateMemberProfileForm
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

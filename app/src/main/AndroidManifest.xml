@@ -92,6 +92,12 @@
         </activity>
 
         <activity
+            android:name=".activity.PasswordCertificationActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
             android:name=".activity.MypageActivity"
             android:exported="true">
         </activity>
