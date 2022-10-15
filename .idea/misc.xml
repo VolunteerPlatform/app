@@ -41,6 +41,7 @@
         <entry key="app/src/main/res/drawable/corner_shape.xml" value="0.1205" />
         <entry key="app/src/main/res/drawable/hyperlink_underline.xml" value="0.232" />
         <entry key="app/src/main/res/drawable/ic_baseline_my_location_24.xml" value="0.1525" />
+        <entry key="app/src/main/res/drawable/ic_contour.xml" value="0.1925" />
         <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1525" />
         <entry key="app/src/main/res/drawable/ic_icon_arrow_left_small_mono.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/ic_icon_arrow_right_small_mono.xml" value="0.1525" />
@@ -67,15 +68,15 @@
         <entry key="app/src/main/res/layout/edit_password_activity.xml" value="0.7067708333333333" />
         <entry key="app/src/main/res/layout/filter_activity.xml" value="0.1" />
         <entry key="app/src/main/res/layout/find_login_id_activity.xml" value="0.9661458333333334" />
-        <entry key="app/src/main/res/layout/find_password_activity.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/find_password_activity.xml" value="0.418133544921875" />
         <entry key="app/src/main/res/layout/fragment_activity_history.xml" value="0.9661458333333334" />
-        <entry key="app/src/main/res/layout/fragment_mypage.xml" value="0.9385333959607111" />
+        <entry key="app/src/main/res/layout/fragment_mypage.xml" value="0.34599609375" />
         <entry key="app/src/main/res/layout/fragment_wishlist.xml" value="0.9661458333333334" />
         <entry key="app/src/main/res/layout/landing.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/login.xml" value="0.34057971014492755" />
         <entry key="app/src/main/res/layout/login_activity.xml" value="0.659467061360677" />
         <entry key="app/src/main/res/layout/map_activity.xml" value="0.9180017222528873" />
-        <entry key="app/src/main/res/layout/mypage_activity.xml" value="0.6335464477539063" />
+        <entry key="app/src/main/res/layout/mypage_activity.xml" value="0.30898590087890626" />
         <entry key="app/src/main/res/layout/mypage_put_activity.xml" value="0.4388089047664661" />
         <entry key="app/src/main/res/layout/signup_activity.xml" value="0.33810784868199184" />
         <entry key="app/src/main/res/layout/signup_birthday_activity.xml" value="0.3016304347826087" />
@@ -91,6 +92,7 @@
         <entry key="app/src/main/res/layout/signup_user_idOf1365_activity.xml" value="0.2971014492753623" />
         <entry key="app/src/main/res/layout/signup_user_name_activity.xml" value="0.297109277697577" />
         <entry key="app/src/main/res/layout/view_session_item.xml" value="0.32065217391304346" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>

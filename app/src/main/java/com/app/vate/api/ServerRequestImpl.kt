@@ -62,4 +62,12 @@ class ServerRequestImpl : ServerRequest {
     override fun getTimetable(): Call<ServerResponse<List<TimeTableElement>>> {
         return ApiClient.getClient().create(VolunteerAPI::class.java).getTimetable()
     }
+
+    override fun getMemberProfile(): Call<ServerResponse<MemberProfile>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).getMemberProfile()
+    }
+
+    override fun updateMemberProfile(updateMemberProfileForm: UpdateMemberProfileForm): Call<ServerResponse<UpdateMemberProfileForm>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).updateMemberProfile(updateMemberProfileForm)
+    }
 }

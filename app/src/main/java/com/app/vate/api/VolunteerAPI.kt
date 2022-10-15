@@ -57,4 +57,12 @@ interface VolunteerAPI {
 
     @GET("/members/timetable")
     fun getTimetable() : Call<ServerResponse<List<TimeTableElement>>>
+
+    @GET("/members/profile")
+    fun getMemberProfile() : Call<ServerResponse<MemberProfile>>
+
+    @POST("/members/profile")
+    fun updateMemberProfile(
+        @Body json: UpdateMemberProfileForm
+    ) : Call<ServerResponse<UpdateMemberProfileForm>>
 }

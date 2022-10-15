@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
-    android:clickable="false"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="false">
 
     <TextView
         android:id="@+id/myText"
@@ -35,13 +35,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myText" />
 
-
     <TextView
         android:id="@+id/myInformation"
         style="@style/hyperlink2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
         android:fontFamily="@font/pretendard"
         android:text="내 정보"
         android:textColor="@color/black"
@@ -50,16 +52,192 @@
         app:layout_constraintTop_toBottomOf="@+id/startMyText" />
 
     <TextView
+        android:id="@+id/updatePassword"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="비밀번호 변경"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/startMyText"
+        app:layout_constraintTop_toBottomOf="@+id/myInformation" />
+
+    <TextView
         android:id="@+id/myTimetable"
         style="@style/hyperlink2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
         android:fontFamily="@font/pretendard"
         android:text="내 시간표"
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/startMyText"
-        app:layout_constraintTop_toBottomOf="@id/myInformation" />
+        app:layout_constraintTop_toBottomOf="@id/updatePassword" />
+
+    <ImageView
+        android:id="@+id/contourFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="28dp"
+        android:src="@drawable/ic_contour"
+        app:layout_constraintStart_toStartOf="@+id/myTimetable"
+        app:layout_constraintTop_toBottomOf="@+id/myTimetable" />
+
+    <TextView
+        android:id="@+id/serviceTextCenterText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendard"
+        android:text="고객 센터"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/startMyText"
+        app:layout_constraintTop_toBottomOf="@+id/contourFirst" />
+
+
+    <TextView
+        android:id="@+id/frequentlyAskedQuestions"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="자주 묻는 질문"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/serviceTextCenterText"
+        app:layout_constraintTop_toBottomOf="@id/serviceTextCenterText" />
+
+    <TextView
+        android:id="@+id/kakaoAsked"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="1 : 1 카카오 문의"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/frequentlyAskedQuestions"
+        app:layout_constraintTop_toBottomOf="@+id/frequentlyAskedQuestions" />
+
+    <TextView
+        android:id="@+id/agentContact"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="상담원 연결"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/kakaoAsked"
+        app:layout_constraintTop_toBottomOf="@+id/kakaoAsked" />
+
+    <ImageView
+        android:id="@+id/contourSecond"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="28dp"
+        android:src="@drawable/ic_contour"
+        app:layout_constraintStart_toStartOf="@+id/agentContact"
+        app:layout_constraintTop_toBottomOf="@+id/agentContact" />
+
+    <TextView
+        android:id="@+id/alertText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendard"
+        android:text="알림함"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/startMyText"
+        app:layout_constraintTop_toBottomOf="@+id/contourSecond" />
+
+    <TextView
+        android:id="@+id/notice"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="공지사항"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/alertText"
+        app:layout_constraintTop_toBottomOf="@+id/alertText" />
+
+    <TextView
+        android:id="@+id/benefitGuide"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="혜택 안내"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/notice"
+        app:layout_constraintTop_toBottomOf="@id/notice" />
+
+    <ImageView
+        android:id="@+id/contourThird"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="28dp"
+        android:src="@drawable/ic_contour"
+        app:layout_constraintStart_toStartOf="@+id/benefitGuide"
+        app:layout_constraintTop_toBottomOf="@+id/benefitGuide" />
+
+    <TextView
+        android:id="@+id/setting"
+        style="@style/hyperlink2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="28dp"
+        android:drawableEnd="@drawable/ic_right_arrow"
+        android:fontFamily="@font/pretendard"
+        android:text="설정"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/contourThird"
+        app:layout_constraintTop_toBottomOf="@id/contourThird" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
