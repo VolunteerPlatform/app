@@ -70,4 +70,8 @@ class ServerRequestImpl : ServerRequest {
     override fun updateMemberProfile(updateMemberProfileForm: UpdateMemberProfileForm): Call<ServerResponse<UpdateMemberProfileForm>> {
         return ApiClient.getClient().create(VolunteerAPI::class.java).updateMemberProfile(updateMemberProfileForm)
     }
+
+    override fun certificationPassword(certificationForm: CertificationForm): Call<ServerResponse<CertificationForm>> {
+        return ApiClient.getClient().create(VolunteerAPI::class.java).certificationPassword(certificationForm)
+    }
 }

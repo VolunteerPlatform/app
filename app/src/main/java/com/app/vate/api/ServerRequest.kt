@@ -34,4 +34,6 @@ interface ServerRequest {
     fun getMemberProfile(): Call<ServerResponse<MemberProfile>>
 
     fun updateMemberProfile(updateMemberProfileForm: UpdateMemberProfileForm): Call<ServerResponse<UpdateMemberProfileForm>>
+
+    fun certificationPassword(certificationForm: CertificationForm): Call<ServerResponse<CertificationForm>>
 }
