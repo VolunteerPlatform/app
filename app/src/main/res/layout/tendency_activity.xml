@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/signText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/pretendard"
+        android:text="회원가입"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tendencyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendard"
+        android:text="성향 봉사"
+        android:textColor="#FF7433"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signText" />
+
+    <TextView
+        android:id="@+id/passwordInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/pretendard"
+        android:text="내 성향에 맞는 봉사 하나를 선택해 주세요."
+        android:textColor="#575757"
+        app:layout_constraintStart_toStartOf="@+id/tendencyText"
+        app:layout_constraintTop_toBottomOf="@+id/tendencyText" />
+
+
+
+
+    <TextView
+        android:id="@+id/pageNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="8/9"
+        android:textColor="#C4C8CE"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/continueSignUp"
+        tools:layout_editor_absoluteX="371dp" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/continue_button"
+        android:fontFamily="@font/pretendard"
+        android:text="계속하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tendencyText"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_living_support"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
