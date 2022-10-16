@@ -16,7 +16,8 @@
         android:theme="@style/Theme.VATE">
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="d195f9980729d0aad71fda911dc08672"/>
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.SignupEmailActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,12 +34,6 @@
 
         <activity
             android:name=".activity.SignupGenderActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
-        <activity
-            android:name=".activity.SignupEmailActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
         </activity>
