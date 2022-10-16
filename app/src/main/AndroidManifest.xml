@@ -103,6 +103,11 @@
         </activity>
 
         <activity
+            android:name=".activity.TendencyActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
             android:name=".activity.MapActivity"
             android:exported="true">
         </activity>

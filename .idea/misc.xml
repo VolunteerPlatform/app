@@ -60,6 +60,8 @@
         <entry key="app/src/main/res/drawable/round_corner_input_text.xml" value="0.1785" />
         <entry key="app/src/main/res/drawable/round_corner_input_text_default.xml" value="0.23" />
         <entry key="app/src/main/res/drawable/text_selector.xml" value="0.23" />
+        <entry key="app/src/main/res/drawable/timetable_button_selector.xml" value="0.237" />
+        <entry key="app/src/main/res/drawable/timetable_checked.xml" value="0.237" />
         <entry key="app/src/main/res/font/font.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/layout/app_history_item.xml" value="0.9661458333333334" />
@@ -92,7 +94,7 @@
         <entry key="app/src/main/res/layout/signup_user_id1365_activity.xml" value="0.32382246376811596" />
         <entry key="app/src/main/res/layout/signup_user_idOf1365_activity.xml" value="0.2971014492753623" />
         <entry key="app/src/main/res/layout/signup_user_name_activity.xml" value="0.297109277697577" />
-        <entry key="app/src/main/res/layout/tendency_activity.xml" value="0.3278985507246377" />
+        <entry key="app/src/main/res/layout/tendency_activity.xml" value="0.37662444183791893" />
         <entry key="app/src/main/res/layout/view_session_item.xml" value="0.32065217391304346" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.4036458333333333" />
       </map>

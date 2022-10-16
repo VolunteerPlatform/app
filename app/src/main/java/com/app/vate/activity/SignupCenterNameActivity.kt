@@ -23,7 +23,7 @@ class SignupCenterNameActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.continueSignUp)
         button.setOnClickListener {
-            val phoneNumberActivity = Intent(this, SignupPhoneNumberActivity::class.java)
+            val tendencyActivity = Intent(this, TendencyActivity::class.java)
 
             val email = intent.getStringExtra("email").toString()
             val password = intent.getStringExtra("password").toString()
@@ -40,15 +40,15 @@ class SignupCenterNameActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "센터 이름을 입력해 주세요", Toast.LENGTH_SHORT).show()
                 }
                 else -> {
-                    phoneNumberActivity.putExtra("memberName", memberName)
-                    phoneNumberActivity.putExtra("email", email)
-                    phoneNumberActivity.putExtra("password", password)
-                    phoneNumberActivity.putExtra("birthday", birthday)
-                    phoneNumberActivity.putExtra("idOf1365", idOf1365)
-                    phoneNumberActivity.putExtra("gender", gender)
-                    phoneNumberActivity.putExtra("centerName", centerName)
+                    tendencyActivity.putExtra("memberName", memberName)
+                    tendencyActivity.putExtra("email", email)
+                    tendencyActivity.putExtra("password", password)
+                    tendencyActivity.putExtra("birthday", birthday)
+                    tendencyActivity.putExtra("idOf1365", idOf1365)
+                    tendencyActivity.putExtra("gender", gender)
+                    tendencyActivity.putExtra("centerName", centerName)
 
-                    startActivity(phoneNumberActivity)
+                    startActivity(tendencyActivity)
                 }
             }
         }

@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="475dp"
         android:layout_marginEnd="20dp"
-        android:text="5/8"
+        android:text="5/9"
         android:textColor="#C4C8CE"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/signupGenderFemale"

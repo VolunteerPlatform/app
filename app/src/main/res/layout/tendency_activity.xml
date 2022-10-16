@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/signText" />
 
     <TextView
-        android:id="@+id/passwordInfo"
+        android:id="@+id/tendencyInfoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="17dp"
@@ -44,43 +44,175 @@
         app:layout_constraintStart_toStartOf="@+id/tendencyText"
         app:layout_constraintTop_toBottomOf="@+id/tendencyText" />
 
-
-
-
     <TextView
         android:id="@+id/pageNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:text="8/9"
         android:textColor="#C4C8CE"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/continueSignUp"
-        tools:layout_editor_absoluteX="371dp" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/continueSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/continue_button"
-        android:fontFamily="@font/pretendard"
-        android:text="계속하기"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tendencyText"
-        tools:layout_editor_absoluteX="24dp" />
+        tools:layout_editor_absoluteX="352dp"
+        tools:layout_editor_absoluteY="668dp" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/livingSupportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_living_support"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="171dp" />
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/tendencyText"
+        app:layout_constraintTop_toBottomOf="@+id/tendencyInfoText"
+        app:srcCompat="@drawable/ic_living_support" />
+
+    <ImageButton
+        android:id="@+id/counselingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/livingSupportButton"
+        app:layout_constraintTop_toBottomOf="@+id/livingSupportButton"
+        app:srcCompat="@drawable/ic_medical" />
+
+    <ImageButton
+        android:id="@+id/educationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/counselingButton"
+        app:layout_constraintTop_toBottomOf="@+id/counselingButton"
+        app:srcCompat="@drawable/ic_envitnoment" />
+
+    <ImageButton
+        android:id="@+id/medicalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/educationButton"
+        app:layout_constraintTop_toBottomOf="@+id/educationButton"
+        app:srcCompat="@drawable/ic_public" />
+
+    <ImageButton
+        android:id="@+id/ruralButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="@+id/medicalButton"
+        app:layout_constraintTop_toBottomOf="@+id/medicalButton"
+        app:srcCompat="@drawable/ic_metor" />
+
+    <ImageButton
+        android:id="@+id/cultureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/disasterButton"
+        app:layout_constraintStart_toEndOf="@+id/livingSupportButton"
+        app:layout_constraintTop_toBottomOf="@+id/tendencyInfoText"
+        app:srcCompat="@drawable/ic_counseling" />
+
+    <ImageButton
+        android:id="@+id/environmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/disasterButton"
+        app:layout_constraintStart_toEndOf="@+id/counselingButton"
+        app:layout_constraintTop_toBottomOf="@+id/cultureButton"
+        app:srcCompat="@drawable/ic_rural" />
+
+    <ImageButton
+        android:id="@+id/adminAssistButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/disasterButton"
+        app:layout_constraintStart_toEndOf="@+id/educationButton"
+        app:layout_constraintTop_toBottomOf="@+id/environmentButton"
+        app:srcCompat="@drawable/ic_admin_assist" />
+
+    <ImageButton
+        android:id="@+id/safetyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/disasterButton"
+        app:layout_constraintStart_toEndOf="@+id/medicalButton"
+        app:layout_constraintTop_toBottomOf="@+id/adminAssistButton"
+        app:srcCompat="@drawable/ic_global" />
+
+    <ImageButton
+        android:id="@+id/publicButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/disasterButton"
+        app:layout_constraintStart_toEndOf="@+id/ruralButton"
+        app:layout_constraintTop_toBottomOf="@+id/safetyButton"
+        app:srcCompat="@drawable/ic_disaster" />
+
+    <ImageButton
+        android:id="@+id/disasterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/cultureButton"
+        app:layout_constraintTop_toBottomOf="@+id/tendencyInfoText"
+        app:srcCompat="@drawable/ic_education" />
+
+    <ImageButton
+        android:id="@+id/mentorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/environmentButton"
+        app:layout_constraintTop_toBottomOf="@+id/disasterButton"
+        app:srcCompat="@drawable/id_culture" />
+
+    <ImageButton
+        android:id="@+id/etcButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/adminAssistButton"
+        app:layout_constraintTop_toBottomOf="@+id/mentorButton"
+        app:srcCompat="@drawable/ic_safety" />
+
+    <ImageButton
+        android:id="@+id/globalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/safetyButton"
+        app:layout_constraintTop_toBottomOf="@+id/etcButton"
+        app:srcCompat="@drawable/ic_home_evirinment" />
+
+    <ImageButton
+        android:id="@+id/homeEnvironmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/publicButton"
+        app:layout_constraintTop_toBottomOf="@+id/globalButton"
+        app:srcCompat="@drawable/ic_etc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
