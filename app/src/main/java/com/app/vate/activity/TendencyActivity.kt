@@ -92,7 +92,7 @@ class TendencyActivity : AppCompatActivity() {
         val birthday = intent.getStringExtra("birthday").toString()
         val idOf1365 = intent.getStringExtra("idOf1365").toString()
         val gender = intent.getStringExtra("gender").toString()
-        val centerName = intent.getStringExtra("content").toString()
+        val centerName = intent.getStringExtra("centerName").toString()
 
         phoneNumberActivity.putExtra("memberName", memberName)
         phoneNumberActivity.putExtra("email", email)
