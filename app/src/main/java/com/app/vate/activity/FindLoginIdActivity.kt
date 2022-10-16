@@ -25,15 +25,14 @@ class FindLoginIdActivity : AppCompatActivity() {
         binding = FindLoginIdActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val loginActivity = Intent(this, LoginActivity::class.java)
+        loginActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
         binding.backPage.setOnClickListener {
-            val loginActivity = Intent(this, LoginActivity::class.java)
             startActivity(loginActivity)
         }
 
         binding.findLoginIdButton.setOnClickListener {
-            val loginActivity = Intent(this, LoginActivity::class.java)
-            val redirect = Intent(this, FindLoginIdActivity::class.java)
-
             val editUserRealName: EditText = binding.enterUserName
             val userRealName = editUserRealName.text.toString()
 
@@ -55,8 +54,7 @@ class FindLoginIdActivity : AppCompatActivity() {
                             .create()
                             .show()
                     } else {
-                        Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        startActivity(redirect)
+                        Toast.makeText(applicationContext, "해당하는 사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
 

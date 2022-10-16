@@ -24,15 +24,14 @@ class EditPasswordActivity : AppCompatActivity() {
         binding = EditPasswordActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val loginActivity = Intent(this, LoginActivity::class.java)
+        loginActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
         binding.backPage.setOnClickListener {
-            val loginActivity = Intent(this, LoginActivity::class.java)
             startActivity(loginActivity)
         }
 
         binding.editPasswordButton.setOnClickListener {
-            val loginActivity = Intent(this, LoginActivity::class.java)
-            val redirect = Intent(this, EditPasswordActivity::class.java)
-
             val userName = binding.enterUserName.text.toString()
             val password = binding.password.text.toString()
             val passwordValidation = binding.passwordValidation.text.toString()
@@ -82,9 +81,7 @@ class EditPasswordActivity : AppCompatActivity() {
                                         .create()
                                         .show()
                                 } else {
-                                    Toast.makeText(applicationContext, "변경 실패", Toast.LENGTH_SHORT)
-                                        .show()
-                                    startActivity(redirect)
+                                    Toast.makeText(applicationContext, "변경에 실패하였습니다.", Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }

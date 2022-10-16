@@ -24,15 +24,15 @@ class FindPasswordActivity : AppCompatActivity() {
         binding = FindPasswordActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val editPasswordActivity = Intent(this, EditPasswordActivity::class.java)
+
         binding.backPage.setOnClickListener {
             val loginActivity = Intent(this, LoginActivity::class.java)
+            loginActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(loginActivity)
         }
 
         binding.findPasswordButton.setOnClickListener {
-            val editPasswordActivity = Intent(this, EditPasswordActivity::class.java)
-            val redirect = Intent(this, FindPasswordActivity::class.java)
-
             val editUserRealName: EditText = binding.enterUserId
             val userName = editUserRealName.text.toString()
 
@@ -44,8 +44,7 @@ class FindPasswordActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "비밀번호를 변경해 주세요.", Toast.LENGTH_SHORT).show()
                         startActivity(editPasswordActivity)
                     } else {
-                        Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
-                        startActivity(redirect)
+                        Toast.makeText(applicationContext, "해당하는 사용자를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
                     }
                 }
 
