@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.app.vate.api.Login
 import com.app.vate.api.PostResult
-import com.app.vate.databinding.FindLoginIdActivityBinding
 import com.app.vate.databinding.LoginActivityBinding
 import com.app.vate.model.LoginForm
 import retrofit2.Call
@@ -62,19 +61,12 @@ class LoginActivity : AppCompatActivity() {
                             LoginContext.refreshToken = it
                         }
 
-                        if (response.body()?.statusCode == 200) {
-                            startActivity(mapActivity)
-                        } else {
-                            Toast.makeText(
-                                applicationContext,
-                                "등록되지 않은 회원 정보입니다.",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            startActivity(redirect)
-                        }
+                        startActivity(mapActivity)
+                    } else {
+                        Toast.makeText(applicationContext, "등록되지 않은 회원 정보입니다.", Toast.LENGTH_SHORT).show()
+                        startActivity(redirect)
                     }
                 }
-
                 override fun onFailure(call: Call<PostResult>, t: Throwable) {
                     Log.d("test login", t.message.toString())
                     Log.d("test login", "fail")

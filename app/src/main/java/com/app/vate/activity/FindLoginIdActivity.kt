@@ -45,20 +45,18 @@ class FindLoginIdActivity : AppCompatActivity() {
             api.findLoginId(findLoginIdForm).enqueue(object : Callback<PostResult> {
                 override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
                     if (response.isSuccessful) {
-                        if (response.body()?.statusCode == 200) {
-                            val result = response.body()?.result
-                            AlertDialog.Builder(this@FindLoginIdActivity)
-                                .setTitle("아이디 찾기.")
-                                .setMessage(result)
-                                .setPositiveButton("로그인 하기") { _, _ ->
-                                    startActivity(loginActivity)
-                                }
-                                .create()
-                                .show()
-                        } else {
-                            Toast.makeText(applicationContext, "등록되지 않은 회원 정보입니다.", Toast.LENGTH_SHORT).show()
-                            startActivity(redirect)
-                        }
+                        val result = response.body()?.result
+                        AlertDialog.Builder(this@FindLoginIdActivity)
+                            .setTitle("아이디 찾기.")
+                            .setMessage(result)
+                            .setPositiveButton("로그인 하기") { _, _ ->
+                                startActivity(loginActivity)
+                            }
+                            .create()
+                            .show()
+                    } else {
+                        Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        startActivity(redirect)
                     }
                 }
 

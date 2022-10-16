@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.app.vate.api.FindLoginId
 import com.app.vate.api.FindPassword
 import com.app.vate.api.PostResult
 import com.app.vate.databinding.FindPasswordActivityBinding
@@ -43,13 +41,11 @@ class FindPasswordActivity : AppCompatActivity() {
             api.findPassword(findPasswordForm).enqueue(object : Callback<PostResult> {
                 override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
                     if (response.isSuccessful) {
-                        if (response.body()?.statusCode == 200) {
-                            Toast.makeText(applicationContext, "비밀번호를 변경해 주세요.", Toast.LENGTH_SHORT).show()
-                            startActivity(editPasswordActivity)
-                        } else {
-                            Toast.makeText(applicationContext, "등록되지 않은 회원 정보입니다.", Toast.LENGTH_SHORT).show()
-                            startActivity(redirect)
-                        }
+                        Toast.makeText(applicationContext, "비밀번호를 변경해 주세요.", Toast.LENGTH_SHORT).show()
+                        startActivity(editPasswordActivity)
+                    } else {
+                        Toast.makeText(applicationContext, response.body()?.message, Toast.LENGTH_SHORT).show()
+                        startActivity(redirect)
                     }
                 }
 
