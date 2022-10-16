@@ -1,6 +1,5 @@
 package com.app.vate.api
 
-import com.app.vate.model.FindLoginIdForm
 import com.app.vate.model.FindPasswordForm
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

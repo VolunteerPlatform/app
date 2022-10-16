@@ -37,8 +37,10 @@ class FindPasswordActivity : AppCompatActivity() {
 
             val editUserRealName: EditText = binding.enterUserId
             val userName = editUserRealName.text.toString()
+            val userRealName = binding.enterUserName.text.toString()
+            val userPhoneNumber = binding.enterUserPhoneNumber.text.toString()
 
-            val findPasswordForm = FindPasswordForm(userName)
+            val findPasswordForm = FindPasswordForm(userName, userRealName, userPhoneNumber)
 
             api.findPassword(findPasswordForm).enqueue(object : Callback<PostResult> {
                 override fun onResponse(call: Call<PostResult>, response: Response<PostResult>) {
