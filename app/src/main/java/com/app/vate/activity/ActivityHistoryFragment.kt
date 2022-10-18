@@ -85,6 +85,7 @@ class ActivityHistoryFragment : Fragment() {
                     response: Response<ServerResponse<List<AppHistory>>>
                 ) {
                     appHistory = response.body()?.result?.toMutableList()?: mutableListOf()
+
                     initAdapter(appHistory
                         .stream()
                         .filter {
@@ -96,6 +97,7 @@ class ActivityHistoryFragment : Fragment() {
                     TODO("Not yet implemented")
                 }
             })
+
     }
 
     fun initAdapter(applicationList: MutableList<AppHistory>) {

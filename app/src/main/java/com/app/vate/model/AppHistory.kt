@@ -12,4 +12,7 @@ data class AppHistory(
     val activityId : Long,
     val activityName : String,
     val activitySummary: String,
-    val organization : String) : Serializable
+    val organization : String,
+    var category: Category?,
+    var activityMethod : ActivityMethod?
+    ) : Serializable

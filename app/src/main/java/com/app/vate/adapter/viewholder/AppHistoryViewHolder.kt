@@ -55,8 +55,8 @@ class AppHistoryViewHolder(private val view: View) : RecyclerView.ViewHolder(vie
             }
         }
 
-        categoryTextView.text = "카테고리"
-        activityMethodTextView.text = "온라인"
+        categoryTextView.text = item.category?.description ?: "카테고리"
+        activityMethodTextView.text = item.activityMethod?.description ?: "온라인"
         addOnClickListener(item)
     }
 
